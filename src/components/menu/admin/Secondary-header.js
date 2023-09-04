@@ -30,6 +30,9 @@ export const SecondaryHeader = ({ tab }) => {
   const [activate, setActiv] = useLocalStorageState("active-btn-menu", {
     defaultValue: 1,
   });
+
+  // const [activate, setActiv] = useState(1);
+
   const [activatNavigate, setActivNavigate] = useLocalStorageState(
     "active-navvigate",
     {

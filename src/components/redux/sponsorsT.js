@@ -9,7 +9,8 @@ const sponsors = createSlice({
   },
   reducers: {
     editSponsor: (state, action) => {
-      state.sponsors[action.payload.index] = action.payload.data;
+      state.sponsors.push(action.payload);
+      // state.studentData = [...action.payload, ...state.studentData];
     },
   },
 });

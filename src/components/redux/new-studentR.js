@@ -8,7 +8,7 @@ const AddStudent = createSlice({
   },
   reducers: {
     setStudentsData: (state, action) => {
-      state.studentData = [...state.studentData, action.payload];
+      state.studentData = [action.payload, ...state.studentData];
     },
   },
 });

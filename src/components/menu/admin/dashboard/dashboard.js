@@ -2,69 +2,7 @@ import { Tooltip } from "antd";
 import { Legend } from "chart.js";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
 import { SecondaryHeader } from "../Secondary-header";
-
-const data = [
-  {
-    name: "yanvar",
-    countSponsors: 2000,
-    countStudents: 4000,
-  },
-  {
-    name: "fevral",
-    countSponsors: 3000,
-    countStudents: 2000,
-  },
-  {
-    name: "mart",
-    countSponsors: 1000,
-    countStudents: 2000,
-  },
-  {
-    name: "aprel",
-    countSponsors: 5000,
-    countStudents: 3000,
-  },
-  {
-    name: "may",
-    countSponsors: 3500,
-    countStudents: 2100,
-  },
-  {
-    name: "iyun",
-    countSponsors: 3450,
-    countStudents: 1150,
-  },
-  {
-    name: "iyul",
-    countSponsors: 2000,
-    countStudents: 4400,
-  },
-  {
-    name: "avgust",
-    countSponsors: 1000,
-    countStudents: 3000,
-  },
-  {
-    name: "sentabr",
-    countSponsors: 3200,
-    countStudents: 5800,
-  },
-  {
-    name: "oktabr",
-    countSponsors: 1000,
-    countStudents: 3000,
-  },
-  {
-    name: "noyabr",
-    countSponsors: 1400,
-    countStudents: 3100,
-  },
-  {
-    name: "dekabr",
-    countSponsors: 2700,
-    countStudents: 5000,
-  },
-];
+import { useSelector } from "react-redux";
 
 const Container = ({ children, className }) => {
   return (
@@ -75,6 +13,72 @@ const Container = ({ children, className }) => {
 };
 
 export const RechartsExample = () => {
+  const Sponsers = useSelector((state) => state.sponsorsT.sponsors);
+  const Students = useSelector((state) => state?.studentsData?.studentData);
+
+  const data = [
+    {
+      name: "yanvar",
+      countSponsors: 120,
+      countStudents: 240,
+    },
+    {
+      name: "fevral",
+      countSponsors: 123,
+      countStudents: 251,
+    },
+    {
+      name: "mart",
+      countSponsors: 231,
+      countStudents: 458,
+    },
+    {
+      name: "aprel",
+      countSponsors: 137,
+      countStudents: 264,
+    },
+    {
+      name: "may",
+      countSponsors: 139,
+      countStudents: 269,
+    },
+    {
+      name: "iyun",
+      countSponsors: 145,
+      countStudents: 275,
+    },
+    {
+      name: "iyul",
+      countSponsors: 131,
+      countStudents: 178,
+    },
+    {
+      name: "avgust",
+      countSponsors: 160,
+      countStudents: 290,
+    },
+    {
+      name: "sentabr",
+      countSponsors: 175,
+      countStudents: 450,
+    },
+    {
+      name: "oktabr",
+      countSponsors: 180,
+      countStudents: 450,
+    },
+    {
+      name: "noyabr",
+      countSponsors: 199,
+      countStudents: 520,
+    },
+    {
+      name: "dekabr",
+      countSponsors: Sponsers.length,
+      countStudents: Students.length,
+    },
+  ];
+
   return (
     <div>
       <Container>

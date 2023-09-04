@@ -48,7 +48,16 @@ const Sopnser = () => {
               <ArrowLeftOutlined />
             </span>
             <p>{sponsorsI?.fullName}</p>
-            <Tag color="success">Tasdiqlangan</Tag>
+            <Tag
+              color={
+                (sponsorsI?.status == "Yangi" && "processing") ||
+                (sponsorsI?.status == "Moderatsiyada" && "warning") ||
+                (sponsorsI?.status == "Bekor qilingan" && "error") ||
+                (sponsorsI?.status == "Tasdiqlangan" && "success")
+              }
+            >
+              {sponsorsI?.status}
+            </Tag>
           </div>
         </Container>
       </div>

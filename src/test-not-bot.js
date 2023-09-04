@@ -8,7 +8,7 @@ function onChange(value) {
   console.log("Captcha value:", value);
 }
 
-function RobotTest({ login }) {
+function RobotTest({ login, ref2, ref1 }) {
   const [isChecked, setIsChecked] = useState(false);
 
   const navigate = useNavigate();
@@ -190,13 +190,14 @@ function RobotTest({ login }) {
         >
           Kirish
         </button>
-        <button
-          onClick={() => navigate("/register")}
-          type="primary"
-          className="bg-blue-600 text-white w-1/3 mb-5 py-3 border-none rounded-md"
+
+        <p
+          className="m-0 cursor-pointer animate-bounce animatepulse"
+          ref={ref2}
+          onClick={() => navigate("/register/sponser")}
         >
-          Menu
-        </button>
+          Register Sponser
+        </p>
       </div>
     </div>
   );

@@ -1,3 +1,6 @@
+import { EllipsisOutlined } from "@ant-design/icons";
+import { Divider, Tour } from "antd";
+
 import {
   BrowserRouter,
   Routes,
@@ -11,7 +14,7 @@ import { Button, Space, DatePicker, version, Radio } from "antd";
 import "./App.css";
 import RobotTest from "./test-not-bot";
 import Menu from "./components/menu/menu";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLocalStorageState } from "ahooks";
 import { useLocale } from "antd/es/locale";
 // import { Dashboard } from "./components/menu/admin/sponsers/dashboard";
@@ -28,50 +31,91 @@ import Student from "./components/menu/admin/students/student";
 import SponserRegister from "./components/menu/sponser-register/menu";
 
 function App() {
+  const ref1 = useRef(null);
+  const ref2 = useRef(null);
+  const ref3 = useRef(null);
+  const [open, setOpen] = useLocalStorageState("info", { defaultValue: false });
+  const steps = [
+    {
+      title: "For admins only",
+      // description: "Homiy bo'lishlik uchun",
+      cover: (
+        <img
+          alt="tour.png"
+          src="https://club.metsenat.uz/img/new-logo.svg"
+          // width={"200px"}
+          style={{ width: "300px", marginTop: "-20px" }}
+        />
+      ),
+      placement: "right",
+      target: () => ref1.current,
+    },
+    {
+      title: "Metsenatlar klubiga aʼzo bo‘lish uchun ariza",
+      description: "Homiy bo'lish uchun",
+      cover: (
+        <img
+          alt="tour.png"
+          src="https://club.metsenat.uz/img/new-logo.svg"
+          // width={"200px"}
+          style={{ width: "300px", marginTop: "-20px" }}
+        />
+      ),
+      // placement: "right",
+      target: () => ref2.current,
+    },
+  ];
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const params = useParams();
+
+  console.log(location.pathname);
+
+  useEffect(() => {
+    if (open === true) {
+      setOpen(true);
+    }
+  });
+
   const [activAdmin, setActivAdmin] = useLocalStorageState("activate", {
     defaultValue: false,
   });
   const [loginName, setLoginName] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
 
-  const navigate = useNavigate();
-  const location = useLocation();
-  const params = useParams();
-  // console.log(params);
-
   useEffect(() => {
-    if (activAdmin === true && location.pathname) {
-      navigate("admin");
+    if (activAdmin === true) {
+      navigate("/admin");
     } else {
-      navigate("login");
+      navigate("/login");
     }
   }, [activAdmin]);
 
   const login = () => {
     if (loginName === "admin" && loginPassword === "1234") {
       setActivAdmin(true);
-    } else {
-      setActivAdmin(false);
+      navigate("/admin/dashboard");
     }
   };
 
   return (
     <>
       <Provider store={store}>
+        <Tour open={open} bottom onClose={() => setOpen(false)} steps={steps} />
+
         <Routes>
           <Route path="admin" element={<Menu login={login} />}>
             <Route index element={<RechartsExample />} />
             <Route path="dashboard" element={<RechartsExample />} />
             <Route path="sponsors" element={<Sponsors />} />
-            {/* <Route index element={<Sponsors />} /> */}
-            <Route path="students" element={<Students />} />
-
             <Route path="sponsors/:id" element={<Sopnser />} />
 
+            <Route path="students" element={<Students />} />
             <Route path="students/:id" element={<Student />} />
-
-            <Route path="student/new" element={<AddStudent />} />
           </Route>
+
+          <Route path="/admin/student/new" element={<AddStudent />} />
           <Route path="register" element={<Sigin />} />
           <Route path="register/sponser" element={<SponserRegister />} />
 
@@ -147,7 +191,10 @@ function App() {
                       </span>
                     </div>
 
-                    <div className="bg-white px-5 py-2 mt-8 rounded-lg">
+                    <div
+                      className="bg-white px-5 py-2 mt-8 rounded-lg"
+                      ref={ref1}
+                    >
                       <div>
                         <h3>Kirish</h3>
 
@@ -155,7 +202,7 @@ function App() {
                         <div className="flex flex-col-reverse">
                           <input
                             type="text"
-                            placeholder="adm8904"
+                            placeholder="admin"
                             className="outline-none mt-2 p-2 text-gray-500 bg-gray-100 border-solid border-2 rounded-lg"
                             onChange={(e) => setLoginName(e.target.value)}
                           />
@@ -175,7 +222,7 @@ function App() {
                         <div className="flex flex-col-reverse mt-4">
                           <input
                             type="password"
-                            placeholder="adm8904"
+                            placeholder="1234"
                             className="outline-none mt-2 p-2 text-gray-500 bg-gray-100 border-solid border-2 rounded-lg"
                             onChange={(e) => setLoginPassword(e.target.value)}
                           />
@@ -195,7 +242,12 @@ function App() {
                       {/* <Button onClick={() => navigate("/")} type="primary">
                       Login
                     </Button> */}
-                      <RobotTest login={login} setActivAdmin={setActivAdmin} />
+                      <RobotTest
+                        ref2={ref2}
+                        ref1={ref1}
+                        login={login}
+                        setActivAdmin={setActivAdmin}
+                      />
 
                       {/* </form> */}
                     </div>
