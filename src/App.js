@@ -105,7 +105,10 @@ function App() {
         <Tour open={open} bottom onClose={() => setOpen(false)} steps={steps} />
 
         <Routes>
-          <Route path="admin" element={<Menu login={login} />}>
+          <Route
+            path="admin"
+            element={<Menu setActivAdmin={setActivAdmin} login={login} />}
+          >
             <Route index element={<RechartsExample />} />
             <Route path="dashboard" element={<RechartsExample />} />
             <Route path="sponsors" element={<Sponsors />} />

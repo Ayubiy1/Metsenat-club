@@ -26,7 +26,7 @@ export const StyledTab = styled(Radio.Group)`
   }
 `;
 
-const Menu = ({ login }) => {
+const Menu = ({ login, setActivAdmin }) => {
   const values = useSelector((store) => store.value.valueStudents);
 
   const [sponsorTab, setSponsorTab] = useLocalStorageState("Dashboard", {
@@ -133,7 +133,10 @@ const Menu = ({ login }) => {
                     </svg>
                   </span>
                 </div>
-                <button className="bg-transparent border-none cursor-pointer">
+                <button
+                  className="bg-transparent border-none cursor-pointer"
+                  onClick={() => setActivAdmin(false)}
+                >
                   <svg
                     width="32"
                     height="32"
