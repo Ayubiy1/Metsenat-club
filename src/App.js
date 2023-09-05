@@ -70,7 +70,7 @@ function App() {
   const location = useLocation();
   const params = useParams();
 
-  console.log(location.pathname);
+  // console.log(location.pathname);
 
   useEffect(() => {
     if (open === true) {
@@ -86,7 +86,7 @@ function App() {
 
   useEffect(() => {
     if (activAdmin === true) {
-      navigate("/admin");
+      navigate("/admin/dashboard");
     } else {
       navigate("/login");
     }

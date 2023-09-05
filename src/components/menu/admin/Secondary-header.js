@@ -14,6 +14,7 @@ const Container = ({ children, className }) => {
     <div className={"px-3 md:px-16 lg:px-[120px] " + className}>{children}</div>
   );
 };
+
 export const StyledTab = styled(Radio.Group)`
   .ant-radio-button-wrapper-checked {
     background-color: ${blue[5]};
@@ -58,7 +59,7 @@ export const SecondaryHeader = ({ tab }) => {
             setActiv(1);
           }}
           className={
-            1 === activate
+            1 == activate
               ? "bg-blue-600 text-white hover:text-white rounded-none px-10 rounded-l-md"
               : " rounded-none px-10 rounded-l-md"
           }
@@ -73,7 +74,7 @@ export const SecondaryHeader = ({ tab }) => {
             setActiv(2);
           }}
           className={
-            2 === activate
+            2 == activate
               ? "bg-blue-600 text-white hover:text-white rounded-none px-10"
               : " rounded-none px-10"
           }
@@ -88,7 +89,7 @@ export const SecondaryHeader = ({ tab }) => {
             setActiv(3);
           }}
           className={
-            3 === activate
+            3 == activate
               ? "bg-blue-600 text-white hover:text-white rounded-none px-10 rounded-r-md"
               : " rounded-none px-10 rounded-r-md"
           }

@@ -12,10 +12,13 @@ const sponsors = createSlice({
       state.sponsors.push(action.payload);
       // state.studentData = [...action.payload, ...state.studentData];
     },
+    editSponsore: (state, action) => {
+      state.sponsors[action.payload.index] = action.payload.data;
+    },
   },
 });
 
-export const { editSponsor } = sponsors.actions;
+export const { editSponsor, editSponsore } = sponsors.actions;
 
 export default sponsors.reducer;
 

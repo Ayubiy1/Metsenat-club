@@ -10,16 +10,6 @@ const SponsorsData = [
     type: "jismoniy",
   },
   {
-    id: 2,
-    fullName: "Ismoilov Islom Xayitovich",
-    phone: "987654321",
-    sponsorSum: 1500000,
-    paid: 5000000,
-    date: new Date(),
-    status: "Bekor qilingan",
-    type: "yuridik",
-  },
-  {
     id: 3,
     fullName: "Sultonov Sarvar Otabekovich",
     phone: "5551234567",
@@ -37,6 +27,16 @@ const SponsorsData = [
     paid: 2000000,
     date: new Date(),
     status: "Tasdiqlangan",
+    type: "yuridik",
+  },
+  {
+    id: 2,
+    fullName: "Ismoilov Islom Xayitovich",
+    phone: "987654321",
+    sponsorSum: 1500000,
+    paid: 5000000,
+    date: new Date(),
+    status: "Bekor qilingan",
     type: "yuridik",
   },
   {

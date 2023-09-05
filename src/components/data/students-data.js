@@ -7,6 +7,13 @@ const StudentData = [
     allocatedAmount: 14000000,
     contractAmount: 30000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
 
   {
@@ -17,6 +24,13 @@ const StudentData = [
     allocatedAmount: 28000000,
     contractAmount: 28000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
 
   {
@@ -27,6 +41,13 @@ const StudentData = [
     allocatedAmount: 0,
     contractAmount: 24000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 4,
@@ -36,6 +57,13 @@ const StudentData = [
     allocatedAmount: 20000000,
     contractAmount: 25000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 5,
@@ -45,6 +73,13 @@ const StudentData = [
     allocatedAmount: 20000000,
     contractAmount: 25000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 6,
@@ -54,6 +89,13 @@ const StudentData = [
     allocatedAmount: 1000000,
     contractAmount: 10000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 7,
@@ -63,6 +105,13 @@ const StudentData = [
     allocatedAmount: 4000000,
     contractAmount: 18000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 8,
@@ -72,6 +121,13 @@ const StudentData = [
     allocatedAmount: 0,
     contractAmount: 21000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 9,
@@ -81,6 +137,13 @@ const StudentData = [
     allocatedAmount: 14000000,
     contractAmount: 22000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 10,
@@ -90,6 +153,13 @@ const StudentData = [
     allocatedAmount: 7000000,
     contractAmount: 22000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 11,
@@ -99,6 +169,13 @@ const StudentData = [
     allocatedAmount: 10000000,
     contractAmount: 18000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 12,
@@ -108,6 +185,13 @@ const StudentData = [
     allocatedAmount: 0,
     contractAmount: 15000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 13,
@@ -117,6 +201,13 @@ const StudentData = [
     allocatedAmount: 5000000,
     contractAmount: 12000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 14,
@@ -126,6 +217,13 @@ const StudentData = [
     allocatedAmount: 0,
     contractAmount: 18000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 15,
@@ -135,6 +233,13 @@ const StudentData = [
     allocatedAmount: 2000000,
     contractAmount: 15000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 16,
@@ -144,6 +249,13 @@ const StudentData = [
     allocatedAmount: 10000000,
     contractAmount: 20000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 17,
@@ -153,6 +265,13 @@ const StudentData = [
     allocatedAmount: 8000000,
     contractAmount: 18000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 18,
@@ -162,6 +281,13 @@ const StudentData = [
     allocatedAmount: 12000000,
     contractAmount: 22000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 19,
@@ -171,6 +297,13 @@ const StudentData = [
     allocatedAmount: 0,
     contractAmount: 18000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
   {
     id: 20,
@@ -180,6 +313,13 @@ const StudentData = [
     allocatedAmount: 6000000,
     contractAmount: 20000000,
     phone: 901235485,
+    sponses: [
+      {
+        id: 1,
+        fullName: "Alimov Abror Xabibullayevich",
+        paid: 10000000,
+      },
+    ],
   },
 ];
 export default StudentData;

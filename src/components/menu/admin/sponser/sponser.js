@@ -18,11 +18,12 @@ import {
   Tag,
   Typography,
 } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Option } from "antd/es/mentions";
 import { editSponsor } from "../../../redux/sponsors";
 import { sponsorStatuses, sponsorSumma } from "../../../data/sponsors-status";
 import { useNavigate } from "react-router";
+import { editSponsore } from "../../../redux/sponsorsT";
 const { Title } = Typography;
 
 const Container = ({ children, className }) => {
@@ -32,8 +33,11 @@ const Container = ({ children, className }) => {
 };
 
 const Sopnser = () => {
-  const sponsor = useSelector((state) => state.sponser.sponser);
   const [sponsorsI, sponsorIndex] = useSponsor();
+
+  useEffect(() => {
+    console.log(sponsorsI);
+  }, [sponsorsI]);
 
   const navigate = useNavigate();
   return (
@@ -152,6 +156,9 @@ const Sopnser = () => {
 export default Sopnser;
 
 export const Modalss = () => {
+  const state = useSelector((state) => state.sponsorsT.sponsors);
+  // console.log(state);
+
   const [form] = Form.useForm();
   const onGenderChange = (value) => {
     switch (value) {
@@ -189,18 +196,28 @@ export const Modalss = () => {
   };
 
   const onFinish = (values) => {
+    // console.log(values);
     dispatch(
       editSponsor({
         data: { ...sponsorsI, ...values },
         index: sponsorIndex,
       })
     );
-    console.log("success", values);
+    dispatch(
+      editSponsore({ data: { ...sponsorsI, ...values }, index: sponsorIndex })
+    );
+    // console.log("success", values);
   };
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button
+        type="primary"
+        onClick={() => {
+          showModal();
+          // dispatch(editSponsore());
+        }}
+      >
         <EditOutlined /> Tahrirlash
       </Button>
       <Modal

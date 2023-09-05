@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import modalAdd from "./modals";
 import StudentsInfoa from "./infoStudenRedux";
 import Values from "./slice";
-import SponserR from "../redux/sponser-redux";
+// import SponserR from "../redux/sponser-redux";
 import sponsorsR from "../redux/sponsorsT";
 import sponsorsT from "../redux/sponsorsT";
 import StudentsD from "./new-studentR";
@@ -13,7 +13,7 @@ export default configureStore({
     addStudent: modalAdd,
     studentsInfo: StudentsInfoa,
     value: Values,
-    sponser: SponserR,
+    // sponser: SponserR,
     sponsorsT: sponsorsR,
     studentsData: StudentsD,
     StudentD: StudentD,

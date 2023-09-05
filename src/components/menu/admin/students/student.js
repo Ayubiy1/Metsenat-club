@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { useStudent } from "../../../hooks/use-student";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { ArrowLeftOutlined, EditOutlined } from "@ant-design/icons";
-import { Col, Row, Tag } from "antd";
+import { Button, Col, Row, Table, Tag, Modal, Form, Select } from "antd";
+import SponsorsData from "../../../data/sponsors-data";
 
 const Container = ({ children, className }) => {
   return (
@@ -12,16 +13,110 @@ const Container = ({ children, className }) => {
 };
 
 const Student = () => {
+  const columnsSponsors = [
+    {
+      title: "#",
+      dataIndex: "id",
+      key: "id",
+      render: (value, row) => <p className="m-0 font-semibold">{value}</p>,
+    },
+    {
+      title: "F.I.SH.",
+      dataIndex: "fullName",
+      key: "fullName",
+      render: (value, row) => <p className="m-0 font-semibold">{value}</p>,
+    },
+    {
+      title: "Ajratilingan summa",
+      dataIndex: "paid",
+      key: "paid",
+      render: (value, row) => (
+        <span className="text-[#2E384D] font-semibold">
+          {Intl.NumberFormat("ru-RU").format(value)} UZS
+        </span>
+      ),
+    },
+    {
+      title: "Amallar",
+      dataIndex: "status",
+      key: "status",
+      render: (value, row) => (
+        <>
+          <Button
+            onClick={() => {
+              navigate(`/admin/students/${row.id}`);
+            }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g clip-path="url(#clip0_31_1994)">
+                <path
+                  d="M9 7H6C5.46957 7 4.96086 7.21071 4.58579 7.58579C4.21071 7.96086 4 8.46957 4 9V18C4 18.5304 4.21071 19.0391 4.58579 19.4142C4.96086 19.7893 5.46957 20 6 20H15C15.5304 20 16.0391 19.7893 16.4142 19.4142C16.7893 19.0391 17 18.5304 17 18V15"
+                  stroke="#3467FF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M9 15H12L20.5 6.49998C20.8978 6.10216 21.1213 5.56259 21.1213 4.99998C21.1213 4.43737 20.8978 3.89781 20.5 3.49998C20.1022 3.10216 19.5626 2.87866 19 2.87866C18.4374 2.87866 17.8978 3.10216 17.5 3.49998L9 12V15Z"
+                  stroke="#3467FF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M16 5L19 8"
+                  stroke="#3467FF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </g>
+              <defs>
+                <clipPath id="clip0_31_1994">
+                  <rect width="24" height="24" fill="white" />
+                </clipPath>
+              </defs>
+            </svg>
+          </Button>
+        </>
+      ),
+    },
+  ];
+  const data = useSelector((state) => state?.sponsorsT?.sponsors);
+
+  const [top, setTop] = useState("none");
+  const [bottom, setBottom] = useState("none");
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
   const studentData = useSelector((state) => state.StudentD.studentData);
   const { id } = useParams();
 
   const navigate = useNavigate();
 
   // const student = studentData.map((s) => (s.id === params.id ? s : null));
+
   const sponsorIndex = useMemo(
     () => studentData?.find((item) => item?.id == id),
     [studentData]
   );
+
+  const a = sponsorIndex?.sponses?.map((item) => item);
 
   return (
     <>
@@ -209,6 +304,60 @@ const Student = () => {
                 </div>
               </div>
             </div>
+
+            <div className="my-10 bg-white p-2 rounded-md">
+              <div className="m-2 flex items-center justify-between">
+                <h2>Talabaga homiylar</h2>
+
+                <button
+                  className="bg-[#E5EBFF] text-[#3365FC] text-[15px]  px-7 py-4 rounded-lg border-0 cursor-pointer"
+                  onClick={showModal}
+                >
+                  + Homiy qo‘shish
+                </button>
+              </div>
+              {/* {sponsorIndex?.sponses?.map((item) => {
+                return ( */}
+              {/* <> */}
+              <Table
+                dataSource={a}
+                columns={columnsSponsors}
+                hideOnSinglePage={false}
+                pagination={{ position: [top, bottom] }}
+                // pagination={{
+                //   pageSize: 5,
+                // }}
+              />
+              {/* </>
+                );
+              })} */}
+            </div>
+            <Modal
+              title="Homiy qo‘shish"
+              open={isModalOpen}
+              onOk={handleOk}
+              onCancel={handleCancel}
+              footer={false}
+            >
+              <div
+                className="pt-10 mt-4"
+                style={{ borderTop: "2px solid #F5F5F7" }}
+              >
+                <Form.Item
+                  name={"universitet"}
+                  label={"OTM"}
+                  rules={[{ required: true, message: "OTM ni tanlang" }]}
+                >
+                  <Select
+                    style={{ width: "100%" }}
+                    options={data}
+                    name={"fullName"}
+                    defaultValue={"Homiyni tanlang"}
+                    allowClear
+                  />
+                </Form.Item>
+              </div>
+            </Modal>
           </Col>
         </Row>
       </div>
