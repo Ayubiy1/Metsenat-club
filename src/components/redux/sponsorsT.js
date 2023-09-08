@@ -14,6 +14,7 @@ const sponsors = createSlice({
     },
     editSponsore: (state, action) => {
       state.sponsors[action.payload.index] = action.payload.data;
+      console.log(state.sponsors);
     },
   },
 });

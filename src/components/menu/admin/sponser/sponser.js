@@ -33,11 +33,13 @@ const Container = ({ children, className }) => {
 };
 
 const Sopnser = () => {
+  const sponserDataa = useSelector((state) => state.sponsorsT.sponsors);
+
   const [sponsorsI, sponsorIndex] = useSponsor();
 
   useEffect(() => {
     console.log(sponsorsI);
-  }, [sponsorsI]);
+  }, []);
 
   const navigate = useNavigate();
   return (
@@ -157,7 +159,6 @@ export default Sopnser;
 
 export const Modalss = () => {
   const state = useSelector((state) => state.sponsorsT.sponsors);
-  // console.log(state);
 
   const [form] = Form.useForm();
   const onGenderChange = (value) => {
@@ -196,7 +197,6 @@ export const Modalss = () => {
   };
 
   const onFinish = (values) => {
-    // console.log(values);
     dispatch(
       editSponsor({
         data: { ...sponsorsI, ...values },
@@ -206,7 +206,8 @@ export const Modalss = () => {
     dispatch(
       editSponsore({ data: { ...sponsorsI, ...values }, index: sponsorIndex })
     );
-    // console.log("success", values);
+    handleCancel();
+    // alert("Please select");
   };
 
   return (
@@ -215,7 +216,6 @@ export const Modalss = () => {
         type="primary"
         onClick={() => {
           showModal();
-          // dispatch(editSponsore());
         }}
       >
         <EditOutlined /> Tahrirlash

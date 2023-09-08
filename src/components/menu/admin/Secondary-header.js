@@ -1,7 +1,7 @@
 // import { Container } from "../mini-components/container";
 import { Button, Radio } from "antd";
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { blue } from "@ant-design/colors";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,8 +32,6 @@ export const SecondaryHeader = ({ tab }) => {
     defaultValue: 1,
   });
 
-  // const [activate, setActiv] = useState(1);
-
   const [activatNavigate, setActivNavigate] = useLocalStorageState(
     "active-navvigate",
     {
@@ -43,6 +41,7 @@ export const SecondaryHeader = ({ tab }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const onChange = (e) => {
     navigate(`/admin/${e}`);
@@ -56,10 +55,9 @@ export const SecondaryHeader = ({ tab }) => {
           value={"dashboard"}
           onClick={(e) => {
             onChange("dashboard");
-            setActiv(1);
           }}
           className={
-            1 == activate
+            "/admin/dashboard" == location.pathname
               ? "bg-blue-600 text-white hover:text-white rounded-none px-10 rounded-l-md"
               : " rounded-none px-10 rounded-l-md"
           }
@@ -71,10 +69,9 @@ export const SecondaryHeader = ({ tab }) => {
           value={"sponsors"}
           onClick={(e) => {
             onChange("sponsors");
-            setActiv(2);
           }}
           className={
-            2 == activate
+            "/admin/sponsors" == location.pathname
               ? "bg-blue-600 text-white hover:text-white rounded-none px-10"
               : " rounded-none px-10"
           }
@@ -86,10 +83,9 @@ export const SecondaryHeader = ({ tab }) => {
           value={"students"}
           onClick={(e) => {
             onChange("students");
-            setActiv(3);
           }}
           className={
-            3 == activate
+            "/admin/students" == location.pathname
               ? "bg-blue-600 text-white hover:text-white rounded-none px-10 rounded-r-md"
               : " rounded-none px-10 rounded-r-md"
           }

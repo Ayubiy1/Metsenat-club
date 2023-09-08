@@ -38,7 +38,7 @@ const StudentData = [
     name: "Saimov Rustam Saimjonovich",
     typeStudent: "Magistr",
     universitet: "Toshkent davlat texnika universiteti",
-    allocatedAmount: 0,
+    allocatedAmount: 24000000,
     contractAmount: 24000000,
     phone: 901235485,
     sponses: [
@@ -118,7 +118,7 @@ const StudentData = [
     name: "Rustamov Oybek  Tajiddinovich",
     typeStudent: "Magistr",
     universitet: "Toshkent to’qimachilik va yengil sanoat istituti",
-    allocatedAmount: 0,
+    allocatedAmount: 24000000,
     contractAmount: 21000000,
     phone: 901235485,
     sponses: [
@@ -182,7 +182,7 @@ const StudentData = [
     name: "Karimov Shohjahon Oybekovich",
     typeStudent: "Magistr",
     universitet: "Toshkent umumiy litseyi",
-    allocatedAmount: 0,
+    allocatedAmount: 24000000,
     contractAmount: 15000000,
     phone: 901235485,
     sponses: [
@@ -214,7 +214,7 @@ const StudentData = [
     name: "Muminov Lazizjon Muminovich",
     typeStudent: "Magistr",
     universitet: "Toshkent farmatsevtika instituti",
-    allocatedAmount: 0,
+    allocatedAmount: 24000000,
     contractAmount: 18000000,
     phone: 901235485,
     sponses: [
@@ -294,7 +294,7 @@ const StudentData = [
     name: "Xashimov Farrux Xolboyevich",
     typeStudent: "Magistr",
     universitet: "Toshkent huquqshunoslik instituti",
-    allocatedAmount: 0,
+    allocatedAmount: 24000000,
     contractAmount: 18000000,
     phone: 901235485,
     sponses: [

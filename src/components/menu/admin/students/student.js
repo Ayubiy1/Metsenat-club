@@ -118,6 +118,8 @@ const Student = () => {
 
   const a = sponsorIndex?.sponses?.map((item) => item);
 
+  const f = data.map((i) => i.fullName);
+
   return (
     <>
       <div className="bg-[#fff]">
@@ -350,7 +352,7 @@ const Student = () => {
                 >
                   <Select
                     style={{ width: "100%" }}
-                    options={data}
+                    options={f}
                     name={"fullName"}
                     defaultValue={"Homiyni tanlang"}
                     allowClear

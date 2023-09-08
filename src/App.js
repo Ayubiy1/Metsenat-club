@@ -85,9 +85,9 @@ function App() {
   const [loginPassword, setLoginPassword] = useState("");
 
   useEffect(() => {
-    if (activAdmin === true) {
+    if (activAdmin === true && location.pathname == "/login") {
       navigate("/admin/dashboard");
-    } else {
+    } else if (!activAdmin) {
       navigate("/login");
     }
   }, [activAdmin]);
