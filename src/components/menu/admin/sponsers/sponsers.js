@@ -17,12 +17,12 @@ const Container = ({ children, className }) => {
   );
 };
 
-export const Sponsors = () => {
+export const Sponsors = ({ filter, setFilter }) => {
   const values = useSelector((store) => store.value.valueStudents);
   const sponsersDataR = useSelector((store) => store.sponsorsT.sponsors);
 
   const [sponsorsI, sponsorIndex] = useSponsor();
-  const [filterData, setFilter] = useState(SponsorsData);
+  // const [filterData, setFiltera] = useState(SponsorsData);
 
   const dispatch = useDispatch();
 
@@ -33,6 +33,9 @@ export const Sponsors = () => {
       ? i.fullName.toLocaleLowerCase().includes(values.toLocaleLowerCase())
       : i.fullName
   );
+
+  // const filterData = data.filter((i) => i);
+  // console.log(filterData);
 
   const columnsSponsors = [
     {
@@ -122,7 +125,11 @@ export const Sponsors = () => {
   return (
     <>
       <Container>
-        <SecondaryHeader tab={"students"} />
+        <SecondaryHeader
+          tab={"students"}
+          filter={filter}
+          setFilter={setFilter}
+        />
 
         <div className="">
           <Table

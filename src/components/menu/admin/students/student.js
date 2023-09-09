@@ -1,10 +1,17 @@
-import { useSelector } from "react-redux";
+import { InfoCircleOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router";
 import { useStudent } from "../../../hooks/use-student";
 import { useMemo, useState } from "react";
 import { ArrowLeftOutlined, EditOutlined } from "@ant-design/icons";
-import { Button, Col, Row, Table, Tag, Modal, Form, Select } from "antd";
+import { Button, Col, Row, Table, Tag, Modal, Form, Select, Input } from "antd";
 import SponsorsData from "../../../data/sponsors-data";
+import { Option } from "antd/es/mentions";
+import { OtmData } from "../../../data/otm";
+import {
+  setEditStudentsData,
+  setEditStudentsDataAddSponser,
+} from "../../../redux/new-studentR";
 
 const Container = ({ children, className }) => {
   return (
@@ -104,21 +111,80 @@ const Student = () => {
     setIsModalOpen(false);
   };
 
+  const [isModalOpenEditS, setIsModalOpenEditS] = useState(false);
+  const showModalEditS = () => {
+    setIsModalOpenEditS(true);
+  };
+  const handleCancelEditS = () => {
+    setIsModalOpenEditS(false);
+  };
+
+  const dispatch = useDispatch();
+
   const studentData = useSelector((state) => state.StudentD.studentData);
   const { id } = useParams();
 
   const navigate = useNavigate();
 
-  // const student = studentData.map((s) => (s.id === params.id ? s : null));
-
   const sponsorIndex = useMemo(
     () => studentData?.find((item) => item?.id == id),
     [studentData]
   );
-
   const a = sponsorIndex?.sponses?.map((item) => item);
 
-  const f = data.map((i) => i.fullName);
+  const f = data.map((i) => i);
+  // console.log(f);
+
+  const studentIndex = useMemo(
+    () => studentData?.findIndex((item) => item?.id == id),
+    [studentData, id]
+  );
+
+  const onfinish = (value) => {
+    const newData = {
+      name:
+        value.name === undefined || value.name === ""
+          ? sponsorIndex.name
+          : value.name,
+      universitet:
+        value.universitet === undefined || value.universitet === ""
+          ? sponsorIndex.universitet
+          : value.universitet,
+      phone:
+        value.phone === undefined || +value.phone === ""
+          ? +sponsorIndex.phone
+          : value.phone,
+      contractAmount:
+        value.contractAmount === undefined || value.contractAmount === ""
+          ? sponsorIndex.contractAmount
+          : value.contractAmount,
+      id: 8,
+      typeStudent: "Magistr",
+      allocatedAmount: 24000000,
+      phone: 901235485,
+      sponses: [
+        {
+          id: 1,
+          fullName: "Alimov Abror Xabibullayevich",
+          paid: 10000000,
+        },
+      ],
+    };
+    dispatch(setEditStudentsData({ newData, index: studentIndex }));
+  };
+
+  const newSponserS = (value) => {
+    const a = sponsorIndex?.sponses?.map((i) => i.id);
+
+    const newData = {
+      id: Math.floor(Math.max(...a)) + 1,
+      ...value,
+    };
+
+    dispatch(setEditStudentsDataAddSponser({ newData, index: studentIndex }));
+
+    // console.log(newData);
+  };
 
   return (
     <>
@@ -158,7 +224,8 @@ const Student = () => {
                   style={{
                     color: "#3365FC",
                   }}
-                  className="px-10 py-3 rounded-lg border-none bg-[#E5EBFF]"
+                  className="px-10 py-3 rounded-lg border-none cursor-pointer bg-[#E5EBFF]"
+                  onClick={showModalEditS}
                 >
                   <EditOutlined />
                   Tahrirlash
@@ -284,7 +351,7 @@ const Student = () => {
                       Ajratilingan summa
                     </p>
                     <p className="m-0 font-bold text-[#212121]">
-                      {sponsorIndex?.contractAmount}
+                      {sponsorIndex?.allocatedAmount}
                     </p>
                   </div>
 
@@ -318,21 +385,12 @@ const Student = () => {
                   + Homiy qo‘shish
                 </button>
               </div>
-              {/* {sponsorIndex?.sponses?.map((item) => {
-                return ( */}
-              {/* <> */}
               <Table
                 dataSource={a}
                 columns={columnsSponsors}
                 hideOnSinglePage={false}
                 pagination={{ position: [top, bottom] }}
-                // pagination={{
-                //   pageSize: 5,
-                // }}
               />
-              {/* </>
-                );
-              })} */}
             </div>
             <Modal
               title="Homiy qo‘shish"
@@ -345,20 +403,97 @@ const Student = () => {
                 className="pt-10 mt-4"
                 style={{ borderTop: "2px solid #F5F5F7" }}
               >
+                <Form onFinish={newSponserS}>
+                  <Form.Item
+                    name={"fullname"}
+                    label={"OTM"}
+                    rules={[{ required: true, message: "OTM ni tanlang" }]}
+                  >
+                    <Select
+                      style={{ width: "100%" }}
+                      defaultValue={"Homiyni tanlang"}
+                      allowClear
+                    >
+                      {data.map((item) => (
+                        <>
+                          <Option value={item.fullName}>{item.fullName}</Option>
+                        </>
+                      ))}
+                    </Select>
+                  </Form.Item>
+
+                  <Form.Item
+                    name={"paid"}
+                    label="Ajratilingan summa"
+                    rules={[{ required: true, message: "Ajratilingan summa" }]}
+                  >
+                    <Input type="number" placeholder="Summani kiriting" />
+                  </Form.Item>
+
+                  <Form.Item>
+                    <Button htmlType="submit">Add</Button>
+                  </Form.Item>
+                </Form>
+              </div>
+            </Modal>
+
+            <Modal
+              title="Basic Modal"
+              open={isModalOpenEditS}
+              onOk={handleCancelEditS}
+              onCancel={handleCancelEditS}
+              footer={false}
+            >
+              {" "}
+              <Form
+                layout="vertical"
+                className="w-[90%] mt-5 mx-auto"
+                onFinish={onfinish}
+              >
                 <Form.Item
-                  name={"universitet"}
-                  label={"OTM"}
-                  rules={[{ required: true, message: "OTM ni tanlang" }]}
+                  className=""
+                  label="F.I.Sh. (Familiya Ism Sharifingiz)"
+                  name={"name"}
                 >
+                  <Input placeholder={sponsorIndex?.name} />
+                </Form.Item>
+
+                <Form.Item className="" label="Telefon raqam" name={"phone"}>
+                  <Input placeholder={sponsorIndex?.phone} />
+                </Form.Item>
+
+                <Form.Item name={"universitet"} label={"OTM"}>
                   <Select
                     style={{ width: "100%" }}
-                    options={f}
-                    name={"fullName"}
-                    defaultValue={"Homiyni tanlang"}
+                    defaultValue={sponsorIndex?.universitet}
+                    options={OtmData}
                     allowClear
                   />
                 </Form.Item>
-              </div>
+
+                <Form.Item
+                  className=""
+                  label="Telefon raqam"
+                  name={"contractAmount"}
+                >
+                  <Input
+                    placeholder={
+                      Intl.NumberFormat("ru-Ru").format(
+                        sponsorIndex?.contractAmount
+                      ) + " UZS"
+                    }
+                  />
+                </Form.Item>
+
+                <Form.Item className="hover:text-[#fff]">
+                  <Button
+                    className="bg-blue-500 text-white font-bold hover:text-[#fff]"
+                    htmlType="submit"
+                  >
+                    Submit
+                  </Button>
+                </Form.Item>
+              </Form>
             </Modal>
           </Col>
         </Row>

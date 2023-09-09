@@ -65,6 +65,8 @@ function App() {
       target: () => ref2.current,
     },
   ];
+  const [filter, setFilter] = useState(null);
+  const [filter2, setFilter2] = useState("");
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -111,10 +113,16 @@ function App() {
           >
             <Route index element={<RechartsExample />} />
             <Route path="dashboard" element={<RechartsExample />} />
-            <Route path="sponsors" element={<Sponsors />} />
+            <Route
+              path="sponsors"
+              element={<Sponsors filter={filter} setFilter={setFilter} />}
+            />
             <Route path="sponsors/:id" element={<Sopnser />} />
 
-            <Route path="students" element={<Students />} />
+            <Route
+              path="students"
+              element={<Students filter={filter} setFilter={setFilter} />}
+            />
             <Route path="students/:id" element={<Student />} />
           </Route>
 

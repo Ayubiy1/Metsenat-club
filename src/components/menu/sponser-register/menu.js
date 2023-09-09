@@ -1,5 +1,5 @@
 import { message, Space } from "antd";
-
+import imgg from "../clip-work-searches 1(1).png";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { useLocalStorageState } from "ahooks";
 import { Button, Form, Input, Radio } from "antd";
@@ -33,7 +33,8 @@ const SponserRegister = () => {
   const [typeS, setTypeS] = useState("");
 
   const [paymentAmount, setPaymentAmount] = useState("");
-  const [another, setAnother] = useState();
+  const [another, setAnother] = useState("");
+  console.log(another);
   const [anotherValue, setAnotherValue] = useState("");
 
   const [register, setRegister] = useState(false);
@@ -54,7 +55,7 @@ const SponserRegister = () => {
   });
 
   const addSponser = (value) => {
-    const sponsorSum = another === "BOSHQA" ? anotherValue : another;
+    const sponsorSum = another == "BOSHQA" ? anotherValue : another;
     const newData = {
       id: maxId + 1,
       ...value,
@@ -72,189 +73,201 @@ const SponserRegister = () => {
   return (
     <>
       {register === false ? (
-        <div className="flex items-center justify-center h-[100vh]">
-          <div className="w-[700px] shadow-lg p-4">
-            <h1>Homiy sifatida ariza topshirish</h1>
-            <Radio.Group
-              className="w-[100%]"
-              onChange={(e) => setSize(e.target.value)}
-            >
-              <button
-                onClick={() => {
-                  setActive(1);
-                  setTypeS("jismoniy");
-                }}
-                className={
-                  active === 1
-                    ? "bg-blue-700 text-white w-[50%] text-center border-solid border-blue-700 py-2 px-6 rounded-l-md"
-                    : "w-[50%] text-center bg-transparent border-solid py-2 px-6 rounded-l-md"
-                }
-                value="Jismoniy shaxs"
+        <div className="flex relative items-start justify-center h-[100vh]">
+          <div className="w-[700px] mt-10 lg:w-[50%]">
+            <div className="w-[90%] p-4">
+              <h1>Homiy sifatida ariza topshirish</h1>
+              <Radio.Group
+                className="w-[100%]"
+                onChange={(e) => setSize(e.target.value)}
               >
-                Jismoniy shaxs
-              </button>
-              <button
-                onClick={() => {
-                  setActive(2);
-                  setTypeS("yuridik");
-                }}
-                className={
-                  active === 2
-                    ? "bg-blue-700 text-white w-[50%] text-center border-solid border-blue-700 py-2 px-6 rounded-r-md"
-                    : "w-[50%] text-center bg-transparent border-solid py-2 px-6 rounded-r-md"
-                }
-                value="Yuridik shaxs"
-              >
-                Yuridik shaxs
-              </button>
-            </Radio.Group>
-
-            <div>
-              <Form
-                layout="vertical"
-                className="w-[90%] mt-5 mx-auto"
-                onFinish={addSponser}
-                // success();
-              >
-                <Form.Item
-                  className=""
-                  label="F.I.Sh. (Familiya Ism Sharifingiz)"
-                  rules={[
-                    {
-                      required: true,
-                      message: "F.I.Sh(Familiya Ism Sharif)ni kiriting",
-                    },
-                  ]}
-                  tooltip="F.I.Sh. (Familiya Ism Sharif) ni kiriting"
-                  name={"fullName"}
-                >
-                  <Input placeholder="Abdullayev Abdulla Abdulla o’g’li" />
-                </Form.Item>
-
-                <Form.Item
-                  className=""
-                  label="Telefon raqamingiz"
-                  name={"phone"}
-                  tooltip={{
-                    title: "Telefon raqamingizni kiritishingiz kerak",
-                    icon: <InfoCircleOutlined />,
+                <button
+                  onClick={() => {
+                    setActive(1);
+                    setTypeS("jismoniy");
                   }}
-                  rules={[
-                    {
-                      required: true,
-                      message: "Telefon raqam kiritishingiz kerak",
-                    },
-                  ]}
+                  className={
+                    active === 1
+                      ? "bg-blue-700 text-white w-[50%] text-center border-solid border-blue-700 py-2 px-6 rounded-l-md"
+                      : "w-[50%] text-center bg-transparent border-solid py-2 px-6 rounded-l-md"
+                  }
+                  value="Jismoniy shaxs"
                 >
-                  <Input placeholder="+998 00 000-00-00" />
-                </Form.Item>
+                  Jismoniy shaxs
+                </button>
+                <button
+                  onClick={() => {
+                    setActive(2);
+                    setTypeS("yuridik");
+                  }}
+                  className={
+                    active === 2
+                      ? "bg-blue-700 text-white w-[50%] text-center border-solid border-blue-700 py-2 px-6 rounded-r-md"
+                      : "w-[50%] text-center bg-transparent border-solid py-2 px-6 rounded-r-md"
+                  }
+                  value="Yuridik shaxs"
+                >
+                  Yuridik shaxs
+                </button>
+              </Radio.Group>
 
-                <div className="mt-10">
-                  <p className="text-[#1D1D1F] text-[12px] font-bold uppercase">
-                    To‘lov summasi
-                  </p>
+              <div>
+                <Form
+                  layout="vertical"
+                  className="w-[90%] mt-5 mx-auto"
+                  onFinish={addSponser}
+                  // success();
+                >
+                  <Form.Item
+                    className=""
+                    label="F.I.Sh. (Familiya Ism Sharifingiz)"
+                    rules={[
+                      {
+                        required: true,
+                        message: "F.I.Sh(Familiya Ism Sharif)ni kiriting",
+                      },
+                    ]}
+                    tooltip="F.I.Sh. (Familiya Ism Sharif) ni kiriting"
+                    name={"fullName"}
+                  >
+                    <Input placeholder="Abdullayev Abdulla Abdulla o’g’li" />
+                  </Form.Item>
 
-                  <div className="flex gap-[17px] items-center justify-center flex-wrap">
-                    <span
-                      value={"1000000"}
-                      className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                        another === "1000000" ? "border-[#2E5BFF]" : ""
-                      }`}
-                      onClick={() => onClik("1000000")}
-                    >
-                      1 000 000{" "}
-                      <span className="text-[#2E5BFF] text-[12px] font-normal">
-                        UZB
+                  <Form.Item
+                    className=""
+                    label="Telefon raqamingiz"
+                    name={"phone"}
+                    tooltip={{
+                      title: "Telefon raqamingizni kiritishingiz kerak",
+                      icon: <InfoCircleOutlined />,
+                    }}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Telefon raqam kiritishingiz kerak",
+                      },
+                    ]}
+                  >
+                    <Input placeholder="+998 00 000-00-00" />
+                  </Form.Item>
+
+                  <div className="mt-10">
+                    <p className="text-[#1D1D1F] text-[12px] font-bold uppercase">
+                      To‘lov summasi
+                    </p>
+
+                    <div className="flex gap-[17px] items-center justify-center flex-wrap">
+                      <span
+                        value={"1d"}
+                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
+                          another == "1d" ? "border-[#2E5BFF]" : ""
+                        }`}
+                        onClick={() => onClik("1d")}
+                      >
+                        1 000 000{" "}
+                        <span className="text-[#2E5BFF] text-[12px] font-normal">
+                          UZB
+                        </span>
                       </span>
-                    </span>
 
-                    <span
-                      value={"3000000"}
-                      className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                        another === "3000000" ? "border-[#2E5BFF]" : ""
-                      }`}
-                      onClick={() => onClik("3000000")}
-                    >
-                      3 000 000{" "}
-                      <span className="text-[#2E5BFF] text-[12px] font-normal">
-                        UZB
+                      <span
+                        value={"3d"}
+                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
+                          another == "3d" ? "border-[#2E5BFF]" : ""
+                        }`}
+                        onClick={() => onClik("3d")}
+                      >
+                        3 000 000{" "}
+                        <span className="text-[#2E5BFF] text-[12px] font-normal">
+                          UZB
+                        </span>
                       </span>
-                    </span>
 
-                    <span
-                      value={"7000000"}
-                      className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                        another === "7000000" ? "border-[#2E5BFF]" : ""
-                      }`}
-                      onClick={() => onClik("7000000")}
-                    >
-                      7 000 000{" "}
-                      <span className="text-[#2E5BFF] text-[12px] font-normal">
-                        UZB
+                      <span
+                        value={"7d"}
+                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
+                          another == "7d" ? "border-[#2E5BFF]" : ""
+                        }`}
+                        onClick={() => onClik("7d")}
+                      >
+                        7 000 000{" "}
+                        <span className="text-[#2E5BFF] text-[12px] font-normal">
+                          UZB
+                        </span>
                       </span>
-                    </span>
 
-                    <span
-                      value={"9500000"}
-                      className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                        another === "9 500 000" ? "border-[#2E5BFF]" : ""
-                      }`}
-                      onClick={() => onClik("9 500 000")}
-                    >
-                      9 500 000{" "}
-                      <span className="text-[#2E5BFF] text-[12px] font-normal">
-                        UZB
+                      <span
+                        value={"9500000"}
+                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
+                          another == "9500000" ? "border-[#2E5BFF]" : ""
+                        }`}
+                        onClick={() => onClik("9500000")}
+                      >
+                        9 500 000{" "}
+                        <span className="text-[#2E5BFF] text-[12px] font-normal">
+                          UZB
+                        </span>
                       </span>
-                    </span>
 
-                    <span
-                      value={"12000000"}
-                      className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                        another === "12000000" ? "border-[#2E5BFF]" : ""
-                      }`}
-                      onClick={() => onClik("12000000")}
-                    >
-                      12 000 000{" "}
-                      <span className="text-[#2E5BFF] text-[12px] font-normal">
-                        UZB
+                      <span
+                        value={"12d"}
+                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
+                          another == "12d" ? "border-[#2E5BFF]" : ""
+                        }`}
+                        onClick={() => onClik("12d")}
+                      >
+                        12 000 000{" "}
+                        <span className="text-[#2E5BFF] text-[12px] font-normal">
+                          UZB
+                        </span>
                       </span>
-                    </span>
 
-                    <span
-                      value={"BOSHQA"}
-                      className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                        another === "BOSHQA" ? "border-[#2E5BFF]" : ""
-                      }`}
-                      onClick={() => onClik("BOSHQA")}
-                    >
-                      BOSHQA{" "}
-                    </span>
+                      <span
+                        value={"BOSHQA"}
+                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
+                          another == "BOSHQA" ? "border-[#2E5BFF]" : ""
+                        }`}
+                        onClick={() => onClik("BOSHQA")}
+                      >
+                        BOSHQA{" "}
+                      </span>
+                    </div>
+
+                    {another == "BOSHQA" ? (
+                      <div className="mt-6">
+                        <Input
+                          type="number"
+                          placeholder=""
+                          required
+                          onChange={(e) => setAnotherValue(e.target.value)}
+                        />
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </div>
 
-                  {another === "BOSHQA" ? (
-                    <div className="mt-6">
-                      <Input
-                        type="number"
-                        placeholder=""
-                        required
-                        onChange={(e) => setAnotherValue(e.target.value)}
-                      />
-                    </div>
-                  ) : (
-                    ""
-                  )}
-                </div>
-
-                <Form.Item className="hover:text-[#fff] mt-10">
-                  <Button
-                    className="bg-blue-500 text-white font-bold hover:text-[#fff]"
-                    htmlType="submit"
-                    // onClick={success}
-                  >
-                    Submit
-                  </Button>
-                </Form.Item>
-              </Form>
+                  <Form.Item className="hover:text-[#fff] mt-10">
+                    <Button
+                      className="bg-blue-500 text-white font-bold hover:text-[#fff]"
+                      htmlType="submit"
+                      // onClick={success}
+                    >
+                      Submit
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </div>
+            </div>
+          </div>
+          <div className="w-[40%] hidden lg:block">
+            <div>
+              <p>
+                Yuqori sinflarda bolalar shaxs boʻlib, jamoa boʻlib shakllanadi.
+                Ayni oʻsha paytda ularni oʻzlari oʻrgangan muhitdan ajratib
+                qoʻymaslik kerak.
+              </p>
+              <img src={imgg} className="w-[600px] absolute bottom-0 right-0" />
             </div>
           </div>
         </div>
