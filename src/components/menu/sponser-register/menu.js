@@ -1,8 +1,8 @@
-import { message, Space } from "antd";
+import { Button, message, Space } from "antd";
 import imgg from "../clip-work-searches 1(1).png";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { useLocalStorageState } from "ahooks";
-import { Button, Form, Input, Radio } from "antd";
+import { span, Form, Input, Radio } from "antd";
 import { useEffect, useState } from "react";
 import { editSponsor } from "../../redux/sponsorsT";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,27 +16,14 @@ const SponserRegister = () => {
       content: "This is a success message",
     });
   };
-
   const studentSsD = useSelector((state) => state?.sponsorsT?.sponsors);
-
   const ids = studentSsD.map((student) => student.id);
-
   const maxId = Math.floor(Math.max(...ids));
-
   const [size, setSize] = useState("Jismoniy shaxs");
-  // const [active, setActive] = useLocalStorageState("person", {
-  //   defaultValue: 1,
-  // });
-
   const [active, setActive] = useState(1);
-
-  const [typeS, setTypeS] = useState("");
-
-  const [paymentAmount, setPaymentAmount] = useState("");
-  const [another, setAnother] = useState("");
-  console.log(another);
+  const [typeS, setTypeS] = useState("jismoniy");
+  const [another, setAnother] = useState(1);
   const [anotherValue, setAnotherValue] = useState("");
-
   const [register, setRegister] = useState(false);
 
   const dispatch = useDispatch();
@@ -45,7 +32,6 @@ const SponserRegister = () => {
   const onClik = (value) => {
     setAnother(value);
   };
-
   useEffect(() => {
     if (register === true) {
       setTimeout(function () {
@@ -55,7 +41,7 @@ const SponserRegister = () => {
   });
 
   const addSponser = (value) => {
-    const sponsorSum = another == "BOSHQA" ? anotherValue : another;
+    const sponsorSum = another == 1 ? anotherValue : another;
     const newData = {
       id: maxId + 1,
       ...value,
@@ -157,83 +143,269 @@ const SponserRegister = () => {
                     </p>
 
                     <div className="flex gap-[17px] items-center justify-center flex-wrap">
-                      <span
-                        value={"1d"}
-                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                          another == "1d" ? "border-[#2E5BFF]" : ""
+                      <button
+                        className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                          another == 1
+                            ? "border-[#2E5BFF] border-3"
+                            : "border-1 border-solid border-[#E0E7FF]"
                         }`}
-                        onClick={() => onClik("1d")}
+                        onClick={() => onClik(1)}
                       >
-                        1 000 000{" "}
-                        <span className="text-[#2E5BFF] text-[12px] font-normal">
-                          UZB
+                        <span
+                          className={`text-[14px] my-[17px] sm:text-[18px] cursor-pointer text-[#2E384D] text-center rounded-md font-semibold bg-transparent`}
+                        >
+                          1 000 000{" "}
+                          <span
+                            className={`absolute top-[-10px] right-[-10px] ${
+                              another == 1 ? "" : "hidden"
+                            }`}
+                          >
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                                fill="#2E5BFF"
+                              />
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M14.8466 7.69213L8.86419 13.7093C8.47889 14.0969 7.85513 14.0969 7.47082 13.7093L4.97183 11.1968C4.58752 10.8093 4.58752 10.1819 4.97183 9.79434C5.35712 9.40779 5.98088 9.40779 6.36519 9.79434L8.16751 11.6071L13.4532 6.29065C13.8375 5.90312 14.4613 5.90312 14.8466 6.29065C15.2319 6.6772 15.2319 7.30459 14.8466 7.69213Z"
+                                fill="white"
+                              />
+                            </svg>
+                          </span>
+                          <span className="text-[#2E5BFF] text-[12px] font-normal">
+                            UZB
+                          </span>
                         </span>
-                      </span>
+                      </button>
 
-                      <span
-                        value={"3d"}
-                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                          another == "3d" ? "border-[#2E5BFF]" : ""
+                      <button
+                        className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                          another == 2
+                            ? "border-[#2E5BFF] border-3"
+                            : "border-1 border-solid border-[#E0E7FF]"
                         }`}
-                        onClick={() => onClik("3d")}
+                        onClick={() => onClik(2)}
                       >
-                        3 000 000{" "}
-                        <span className="text-[#2E5BFF] text-[12px] font-normal">
-                          UZB
+                        <span
+                          className={`text-[14px] my-[17px] sm:text-[18px] cursor-pointer text-[#2E384D] text-center rounded-md font-semibold bg-transparent`}
+                        >
+                          3 000 000{" "}
+                          <span
+                            className={`absolute top-[-10px] right-[-10px] ${
+                              another == 2 ? "" : "hidden"
+                            }`}
+                          >
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                                fill="#2E5BFF"
+                              />
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M14.8466 7.69213L8.86419 13.7093C8.47889 14.0969 7.85513 14.0969 7.47082 13.7093L4.97183 11.1968C4.58752 10.8093 4.58752 10.1819 4.97183 9.79434C5.35712 9.40779 5.98088 9.40779 6.36519 9.79434L8.16751 11.6071L13.4532 6.29065C13.8375 5.90312 14.4613 5.90312 14.8466 6.29065C15.2319 6.6772 15.2319 7.30459 14.8466 7.69213Z"
+                                fill="white"
+                              />
+                            </svg>
+                          </span>
+                          <span className="text-[#2E5BFF] text-[12px] font-normal">
+                            UZB
+                          </span>
                         </span>
-                      </span>
+                      </button>
 
-                      <span
-                        value={"7d"}
-                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                          another == "7d" ? "border-[#2E5BFF]" : ""
+                      <button
+                        className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                          another == 3
+                            ? "border-[#2E5BFF] border-3"
+                            : "border-1 border-solid border-[#E0E7FF]"
                         }`}
-                        onClick={() => onClik("7d")}
+                        onClick={() => onClik(3)}
                       >
-                        7 000 000{" "}
-                        <span className="text-[#2E5BFF] text-[12px] font-normal">
-                          UZB
+                        <span
+                          className={`text-[14px] my-[17px] sm:text-[18px] cursor-pointer text-[#2E384D] text-center rounded-md font-semibold bg-transparent`}
+                        >
+                          7 000 000{" "}
+                          <span
+                            className={`absolute top-[-10px] right-[-10px] ${
+                              another == 3 ? "" : "hidden"
+                            }`}
+                          >
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                                fill="#2E5BFF"
+                              />
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M14.8466 7.69213L8.86419 13.7093C8.47889 14.0969 7.85513 14.0969 7.47082 13.7093L4.97183 11.1968C4.58752 10.8093 4.58752 10.1819 4.97183 9.79434C5.35712 9.40779 5.98088 9.40779 6.36519 9.79434L8.16751 11.6071L13.4532 6.29065C13.8375 5.90312 14.4613 5.90312 14.8466 6.29065C15.2319 6.6772 15.2319 7.30459 14.8466 7.69213Z"
+                                fill="white"
+                              />
+                            </svg>
+                          </span>
+                          <span className="text-[#2E5BFF] text-[12px] font-normal">
+                            UZB
+                          </span>
                         </span>
-                      </span>
+                      </button>
 
-                      <span
-                        value={"9500000"}
-                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                          another == "9500000" ? "border-[#2E5BFF]" : ""
+                      <button
+                        className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                          another == 4
+                            ? "border-[#2E5BFF] border-3"
+                            : "border-1 border-solid border-[#E0E7FF]"
                         }`}
-                        onClick={() => onClik("9500000")}
+                        onClick={() => onClik(4)}
                       >
-                        9 500 000{" "}
-                        <span className="text-[#2E5BFF] text-[12px] font-normal">
-                          UZB
+                        <span
+                          className={`text-[14px] my-[17px] sm:text-[18px] cursor-pointer text-[#2E384D] text-center rounded-md font-semibold bg-transparent`}
+                        >
+                          9 500 000{" "}
+                          <span
+                            className={`absolute top-[-10px] right-[-10px] ${
+                              another == 4 ? "" : "hidden"
+                            }`}
+                          >
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                                fill="#2E5BFF"
+                              />
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M14.8466 7.69213L8.86419 13.7093C8.47889 14.0969 7.85513 14.0969 7.47082 13.7093L4.97183 11.1968C4.58752 10.8093 4.58752 10.1819 4.97183 9.79434C5.35712 9.40779 5.98088 9.40779 6.36519 9.79434L8.16751 11.6071L13.4532 6.29065C13.8375 5.90312 14.4613 5.90312 14.8466 6.29065C15.2319 6.6772 15.2319 7.30459 14.8466 7.69213Z"
+                                fill="white"
+                              />
+                            </svg>
+                          </span>
+                          <span className="text-[#2E5BFF] text-[12px] font-normal">
+                            UZB
+                          </span>
                         </span>
-                      </span>
+                      </button>
 
-                      <span
-                        value={"12d"}
-                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                          another == "12d" ? "border-[#2E5BFF]" : ""
+                      <button
+                        className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                          another == 5
+                            ? "border-[#2E5BFF] border-3"
+                            : "border-1 border-solid border-[#E0E7FF]"
                         }`}
-                        onClick={() => onClik("12d")}
+                        onClick={() => onClik(5)}
                       >
-                        12 000 000{" "}
-                        <span className="text-[#2E5BFF] text-[12px] font-normal">
-                          UZB
+                        <span
+                          className={`text-[14px] my-[17px] sm:text-[18px] cursor-pointer text-[#2E384D] text-center rounded-md font-semibold bg-transparent`}
+                        >
+                          12 000 000{" "}
+                          <span
+                            className={`absolute top-[-10px] right-[-10px] ${
+                              another == 5 ? "" : "hidden"
+                            }`}
+                          >
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                                fill="#2E5BFF"
+                              />
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M14.8466 7.69213L8.86419 13.7093C8.47889 14.0969 7.85513 14.0969 7.47082 13.7093L4.97183 11.1968C4.58752 10.8093 4.58752 10.1819 4.97183 9.79434C5.35712 9.40779 5.98088 9.40779 6.36519 9.79434L8.16751 11.6071L13.4532 6.29065C13.8375 5.90312 14.4613 5.90312 14.8466 6.29065C15.2319 6.6772 15.2319 7.30459 14.8466 7.69213Z"
+                                fill="white"
+                              />
+                            </svg>
+                          </span>
+                          <span className="text-[#2E5BFF] text-[12px] font-normal">
+                            UZB
+                          </span>
                         </span>
-                      </span>
+                      </button>
 
-                      <span
-                        value={"BOSHQA"}
-                        className={`py-[17px] w-[188px] cursor-pointer text-[#2E384D] text-center rounded-md text-[18px] font-semibold border-1 border-solid border-[#E0E7FF] bg-transparent ${
-                          another == "BOSHQA" ? "border-[#2E5BFF]" : ""
+                      <button
+                        className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                          another == 6
+                            ? "border-[#2E5BFF] border-3"
+                            : "border-1 border-solid border-[#E0E7FF]"
                         }`}
-                        onClick={() => onClik("BOSHQA")}
+                        onClick={() => onClik(6)}
                       >
-                        BOSHQA{" "}
-                      </span>
+                        <span
+                          className={`text-[14px] my-[17px] sm:text-[18px] cursor-pointer text-[#2E384D] text-center rounded-md font-semibold bg-transparent`}
+                        >
+                          BOSHQA{" "}
+                          <span
+                            className={`absolute top-[-10px] right-[-10px] ${
+                              another == 6 ? "" : "hidden"
+                            }`}
+                          >
+                            <svg
+                              width="20"
+                              height="20"
+                              viewBox="0 0 20 20"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M10 20C15.5228 20 20 15.5228 20 10C20 4.47715 15.5228 0 10 0C4.47715 0 0 4.47715 0 10C0 15.5228 4.47715 20 10 20Z"
+                                fill="#2E5BFF"
+                              />
+                              <path
+                                fill-rule="evenodd"
+                                clip-rule="evenodd"
+                                d="M14.8466 7.69213L8.86419 13.7093C8.47889 14.0969 7.85513 14.0969 7.47082 13.7093L4.97183 11.1968C4.58752 10.8093 4.58752 10.1819 4.97183 9.79434C5.35712 9.40779 5.98088 9.40779 6.36519 9.79434L8.16751 11.6071L13.4532 6.29065C13.8375 5.90312 14.4613 5.90312 14.8466 6.29065C15.2319 6.6772 15.2319 7.30459 14.8466 7.69213Z"
+                                fill="white"
+                              />
+                            </svg>
+                          </span>
+                        </span>
+                      </button>
                     </div>
 
-                    {another == "BOSHQA" ? (
+                    {another == 6 ? (
                       <div className="mt-6">
                         <Input
                           type="number"

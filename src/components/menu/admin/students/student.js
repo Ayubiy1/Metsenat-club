@@ -183,8 +183,11 @@ const Student = () => {
 
     dispatch(setEditStudentsDataAddSponser({ newData, index: studentIndex }));
 
+    console.log(newData);
+
     // console.log(newData);
   };
+  // console.log(sponsorIndex?.sponses);
 
   return (
     <>
@@ -405,7 +408,7 @@ const Student = () => {
               >
                 <Form onFinish={newSponserS}>
                   <Form.Item
-                    name={"fullname"}
+                    name={"fullName"}
                     label={"OTM"}
                     rules={[{ required: true, message: "OTM ni tanlang" }]}
                   >

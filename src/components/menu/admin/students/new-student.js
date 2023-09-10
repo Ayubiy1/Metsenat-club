@@ -27,10 +27,8 @@ export const AddStudent = () => {
     const newData = {
       id: maxId + 1,
       ...value,
-      allocatedAmount: 10,
-      sponses: [
-        { id: 1, fullName: "Alimov Abror Xabibullayevich", paid: 10000000 },
-      ],
+      allocatedAmount: 0,
+      sponses: [],
     };
     console.log(newData);
     dispatch(setStudentsData(newData));
