@@ -1,0 +1,196 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "sponsors": [
+    {
+      "type": "yuridik",
+      "fullName": "Ayubbek",
+      "phone": "+998 90 546 90 66",
+      "status": "Tasdiqlangan",
+      "sponsorSum": "50000000",
+      "id": 1
+    },
+    {
+      "type": "jismoniy",
+      "fullName": "Abror Xabibullayevich new",
+      "phone": "987654321",
+      "status": "Moderatsiyada",
+      "sponsorSum": 1500000,
+      "id": 2
+    },
+    {
+      "type": "jismoniy",
+      "fullName": "a",
+      "phone": "+998 95 897 98 65",
+      "status": "Tasdiqlangan",
+      "sponsorSum": "50000000",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "fullName": "Ahmedov Alisher Fazilovich",
+      "phone": "777888999",
+      "sponsorSum": 500000,
+      "paid": 2000000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Bekor qilingan"
+    },
+    {
+      "id": 5,
+      "fullName": "Xolmirzaev Xurshid Shavkatovich",
+      "phone": "111222333",
+      "sponsorSum": 1000000,
+      "paid": 4000000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 6,
+      "fullName": "Nizomov Nizom Zokirovich",
+      "phone": "444555666",
+      "sponsorSum": 750000,
+      "paid": 3000000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 7,
+      "fullName": "Karimov Karim Bekmirzaevich",
+      "phone": "777777777",
+      "sponsorSum": 400000,
+      "paid": 1500000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 8,
+      "fullName": "Davronov Davron Izzatovich",
+      "phone": "999888777",
+      "sponsorSum": 900000,
+      "paid": 4500000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 9,
+      "fullName": "Fayzullaev Fayzullo Abduxoshimovich",
+      "phone": "333222111",
+      "sponsorSum": 2500000,
+      "paid": 10000000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 10,
+      "fullName": "Shukurov Shukurillo Olimjonovich",
+      "phone": "666555444",
+      "sponsorSum": 600000,
+      "paid": 2400000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "fullName": "Ayubbek",
+      "phone": "+998 90 546 90 66",
+      "status": "Moderatsiyada",
+      "sponsorSum": "50000000",
+      "id": 11
+    },
+    {
+      "id": 12,
+      "fullName": "Ochilov Ochil Abdulazizovich",
+      "phone": "444555666",
+      "sponsorSum": 400000,
+      "paid": 1600000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 13,
+      "fullName": "Jamolov Jamol Bahromovich",
+      "phone": "777888999",
+      "sponsorSum": 2500000,
+      "paid": 10000000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 14,
+      "fullName": "Navoiy Navruz Navro'zovich",
+      "phone": "999888777",
+      "sponsorSum": 900000,
+      "paid": 3600000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 15,
+      "fullName": "Baxromov Baxrom Ismoilovich",
+      "phone": "333222111",
+      "sponsorSum": 1800000,
+      "paid": 7200000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 16,
+      "fullName": "Sirojov Siroj Nematjonovich",
+      "phone": "666555444",
+      "sponsorSum": 600000,
+      "paid": 2400000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 17,
+      "fullName": "Shoxzodov Shoxzod Furqatovich",
+      "phone": "123456789",
+      "sponsorSum": 1200000,
+      "paid": 4800000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 18,
+      "fullName": "Nodirov Nodir Temurotovich",
+      "phone": "987654321",
+      "sponsorSum": 300000,
+      "paid": 1200000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 19,
+      "fullName": "Temirov Temir Alisherovich",
+      "phone": "555555555",
+      "sponsorSum": 5000000,
+      "paid": 20000000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    },
+    {
+      "id": 20,
+      "fullName": "Zafar Zafar Akmalovich",
+      "phone": "777777777",
+      "sponsorSum": 4000000,
+      "paid": 16000000,
+      "date": "2023-09-06T16:53:15.595Z",
+      "status": "Yangi"
+    }
+  ]
+}

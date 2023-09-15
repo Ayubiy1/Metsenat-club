@@ -1,5 +1,6 @@
 import { Button, message, Space } from "antd";
 import imgg from "../clip-work-searches 1(1).png";
+import imgM from "../../Rectangle.png";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import { useLocalStorageState } from "ahooks";
 import { span, Form, Input, Radio } from "antd";
@@ -74,8 +75,8 @@ const SponserRegister = () => {
                   }}
                   className={
                     active === 1
-                      ? "bg-blue-700 text-white w-[50%] text-center border-solid border-blue-700 py-2 px-6 rounded-l-md"
-                      : "w-[50%] text-center bg-transparent border-solid py-2 px-6 rounded-l-md"
+                      ? "cursor-pointer bg-blue-700 text-white w-[50%] text-center border-solid border-blue-700 py-2 px-6 rounded-l-md"
+                      : "cursor-pointer w-[50%] text-center bg-transparent border-solid py-2 px-6 rounded-l-md"
                   }
                   value="Jismoniy shaxs"
                 >
@@ -88,8 +89,8 @@ const SponserRegister = () => {
                   }}
                   className={
                     active === 2
-                      ? "bg-blue-700 text-white w-[50%] text-center border-solid border-blue-700 py-2 px-6 rounded-r-md"
-                      : "w-[50%] text-center bg-transparent border-solid py-2 px-6 rounded-r-md"
+                      ? "cursor-pointer bg-blue-700 text-white w-[50%] text-center border-solid border-blue-700 py-2 px-6 rounded-r-md"
+                      : "cursor-pointer w-[50%] text-center bg-transparent border-solid py-2 px-6 rounded-r-md"
                   }
                   value="Yuridik shaxs"
                 >
@@ -432,14 +433,32 @@ const SponserRegister = () => {
               </div>
             </div>
           </div>
-          <div className="w-[40%] hidden lg:block">
+          <div className="w-[40%] hidden lg:block py-15 p-10">
             <div>
-              <p>
+              <p
+                className="m-0 text-[#28293D] text-[20px] font-normal fontsemibold"
+                style={{ fontFamily: "SF Pro Display" }}
+              >
                 Yuqori sinflarda bolalar shaxs boʻlib, jamoa boʻlib shakllanadi.
                 Ayni oʻsha paytda ularni oʻzlari oʻrgangan muhitdan ajratib
                 qoʻymaslik kerak.
               </p>
-              <img src={imgg} className="w-[600px] absolute bottom-0 right-0" />
+              <div className="flex gap-3 items-center mt-5">
+                <img
+                  src={
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Shavkat_Mirziyoyev_official_portrait.jpg/300px-Shavkat_Mirziyoyev_official_portrait.jpg"
+                  }
+                  className="w-[80px] h-[80px] rounded-full"
+                />
+                <div className="">
+                  <p className="m-0">Shavkat Mirziyoyev</p>
+                  <p className="m-0 text-[#86868B]">
+                    O‘zbekiston Respublikasi Prezidenti
+                  </p>
+                </div>
+              </div>
+
+              <img src={imgg} className="w-[555px] absolute bottom-0 right-0" />
             </div>
           </div>
         </div>

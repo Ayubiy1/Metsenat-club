@@ -13,9 +13,9 @@ const AddStudent = createSlice({
     setEditStudentsData: (state, action) => {
       state.studentData[action.payload.index] = action.payload.newData;
     },
+
     setEditStudentsDataAddSponser: (state, action) => {
       const { index, newData } = action.payload;
-      console.log(newData);
 
       // O'zgartirilgan student obyektini olish
       const editedStudent = state.studentData[index];

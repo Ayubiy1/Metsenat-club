@@ -1,6 +1,6 @@
 import { setSponser } from "../../../redux/sponser-redux";
 import SponsorsData from "../../../data/sponsors-data";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Radio, Button, Table, Badge, Tag } from "antd";
 import dayjs from "dayjs";
 import { useNavigate, useParams } from "react-router";
@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { SecondaryHeader } from "../Secondary-header";
 import { ContainerFilled } from "@ant-design/icons";
 import { useSponsor } from "../../../hooks/use-sponsor";
+import { ContextApi } from "../../../data/api";
+import { useQuery } from "react-query";
 
 const Container = ({ children, className }) => {
   return (
@@ -18,6 +20,11 @@ const Container = ({ children, className }) => {
 };
 
 export const Sponsors = ({ filter, setFilter }) => {
+  const api = useContext(ContextApi);
+  const { data, isLoading, isError } = useQuery("sponsors", () =>
+    api.get("/sponsors")
+  );
+
   const values = useSelector((store) => store.value.valueStudents);
   const sponsersDataR = useSelector((store) => store.sponsorsT.sponsors);
 
@@ -28,7 +35,7 @@ export const Sponsors = ({ filter, setFilter }) => {
 
   const navigate = useNavigate();
 
-  const data = sponsersDataR?.filter((i) =>
+  const dataA = sponsersDataR?.filter((i) =>
     values !== ""
       ? i.fullName.toLocaleLowerCase().includes(values.toLocaleLowerCase())
       : i.fullName
@@ -133,11 +140,12 @@ export const Sponsors = ({ filter, setFilter }) => {
 
         <div className="">
           <Table
-            dataSource={data}
+            dataSource={data?.data}
             columns={columnsSponsors}
             pagination={{
               pageSize: 5,
             }}
+            rowKey={(record) => record.id}
           />
         </div>
       </Container>

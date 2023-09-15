@@ -158,22 +158,26 @@ const Student = () => {
         value.contractAmount === undefined || value.contractAmount === ""
           ? sponsorIndex.contractAmount
           : value.contractAmount,
-      id: 8,
-      typeStudent: "Magistr",
-      allocatedAmount: 24000000,
-      phone: 901235485,
-      sponses: [
-        {
-          id: 1,
-          fullName: "Alimov Abror Xabibullayevich",
-          paid: 10000000,
-        },
-      ],
+      id: sponsorIndex?.id,
+      typeStudent: sponsorIndex?.typeStudent,
+      allocatedAmount: sponsorIndex?.allocatedAmount,
+      phone: sponsorIndex?.phone,
+      sponses: sponsorIndex?.sponses,
     };
+
+    //  [
+    //   {
+    //     id: 1,
+    //     fullName: "Alimov Abror Xabibullayevich",
+    //     paid: 10000000,
+    //   },
+    // ],
+
     dispatch(setEditStudentsData({ newData, index: studentIndex }));
   };
 
   const newSponserS = (value) => {
+    // console.log("a");
     const a = sponsorIndex?.sponses?.map((i) => i.id);
 
     const newData = {
@@ -184,8 +188,6 @@ const Student = () => {
     dispatch(setEditStudentsDataAddSponser({ newData, index: studentIndex }));
 
     console.log(newData);
-
-    // console.log(newData);
   };
   // console.log(sponsorIndex?.sponses);
 

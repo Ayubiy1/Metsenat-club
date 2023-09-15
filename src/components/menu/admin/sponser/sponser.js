@@ -18,12 +18,15 @@ import {
   Tag,
   Typography,
 } from "antd";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Option } from "antd/es/mentions";
 import { editSponsor } from "../../../redux/sponsors";
 import { sponsorStatuses, sponsorSumma } from "../../../data/sponsors-status";
 import { useNavigate } from "react-router";
 import { editSponsore } from "../../../redux/sponsorsT";
+import { ContextApi } from "../../../data/api";
+import { useQuery } from "react-query";
+import { putSponsor, putSponsors } from "../../../servise";
 const { Title } = Typography;
 
 const Container = ({ children, className }) => {
@@ -33,13 +36,14 @@ const Container = ({ children, className }) => {
 };
 
 const Sopnser = () => {
+  const api = useContext(ContextApi);
+  const { data, isLoading, isError } = useQuery("sponsors", () =>
+    api.get("/sponsors")
+  );
+
   const sponserDataa = useSelector((state) => state.sponsorsT.sponsors);
 
   const [sponsorsI, sponsorIndex] = useSponsor();
-
-  useEffect(() => {
-    console.log(sponsorsI);
-  }, []);
 
   const navigate = useNavigate();
   return (
@@ -158,6 +162,11 @@ const Sopnser = () => {
 export default Sopnser;
 
 export const Modalss = () => {
+  const api = useContext(ContextApi);
+  const { data, isLoading, isError } = useQuery("sponsors", () =>
+    api.get("/sponsors")
+  );
+
   const state = useSelector((state) => state.sponsorsT.sponsors);
 
   const [form] = Form.useForm();
@@ -197,17 +206,14 @@ export const Modalss = () => {
   };
 
   const onFinish = (values) => {
-    dispatch(
-      editSponsor({
-        data: { ...sponsorsI, ...values },
-        index: sponsorIndex,
-      })
-    );
-    dispatch(
-      editSponsore({ data: { ...sponsorsI, ...values }, index: sponsorIndex })
-    );
+    const newData = {
+      ...values,
+      id: sponsorsI?.id,
+    };
+    putSponsors(api, sponsorsI?.id, newData);
+
+    putSponsor(api, sponsorsI?.id, newData);
     handleCancel();
-    // alert("Please select");
   };
 
   return (
@@ -221,7 +227,7 @@ export const Modalss = () => {
         <EditOutlined /> Tahrirlash
       </Button>
       <Modal
-        title="Modal"
+        title="Modalaaa"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -245,7 +251,6 @@ export const Modalss = () => {
               </Radio.Button>
             </Radio.Group>
           </Form.Item>
-
           <Form.Item
             label="F.I.Sh. (Familiya Ism Sharifingiz)"
             rules={[
