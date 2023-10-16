@@ -19,14 +19,11 @@ import {
   Typography,
 } from "antd";
 import { useContext, useEffect, useState } from "react";
-import { Option } from "antd/es/mentions";
-import { editSponsor } from "../../../redux/sponsors";
 import { sponsorStatuses, sponsorSumma } from "../../../data/sponsors-status";
-import { useNavigate } from "react-router";
-import { editSponsore } from "../../../redux/sponsorsT";
+import { useNavigate, useParams } from "react-router";
 import { ContextApi } from "../../../data/api";
-import { useQuery } from "react-query";
-import { putSponsor, putSponsors } from "../../../servise";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import axios from "axios";
 const { Title } = Typography;
 
 const Container = ({ children, className }) => {
@@ -36,10 +33,36 @@ const Container = ({ children, className }) => {
 };
 
 const Sopnser = () => {
+  const { id } = useParams();
+
+  // const mutation = useMutation((data) => {
+  //   return api.put(`/sponsors/${id}`, data);
+  // });
+
   const api = useContext(ContextApi);
-  const { data, isLoading, isError } = useQuery("sponsors", () =>
-    api.get("/sponsors")
-  );
+
+  const { mutate } = useMutation(() => {
+    return axios.post("http://192.168.1.48:8080/university", {
+      name: "Test",
+    });
+  });
+
+  // const { data: daataa } = useQuery(() => {
+  //   return axios.get("http://192.168.1.48:8080/university");
+  // });
+  // console.log(daataa);
+
+  let hel = async () => {
+    try {
+      let respons = await axios.get("http://192.168.1.48:8080/university");
+
+      console.log(respons.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  hel();
 
   const sponserDataa = useSelector((state) => state.sponsorsT.sponsors);
 
@@ -48,6 +71,8 @@ const Sopnser = () => {
   const navigate = useNavigate();
   return (
     <>
+      {/* <button onClick={mutate}>Add</button> */}
+
       <div className="bg-[#fff]">
         <Container>
           <div className="flex items-center gap-5">
@@ -98,7 +123,7 @@ const Sopnser = () => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
-                        <g clip-path="url(#clip0_26_187)">
+                        <g clipPath="url(#clip0_26_187)">
                           <path
                             opacity="0.4"
                             d="M11.9594 25.9231L13 21.5L11 18H17L15 21.5L16.0406 25.9231L14 30L11.9594 25.9231ZM14 16C15.5823 16 17.129 15.5308 18.4446 14.6518C19.7602 13.7727 20.7855 12.5233 21.391 11.0615C21.9965 9.59966 22.155 7.99113 21.8463 6.43928C21.5376 4.88743 20.7757 3.46197 19.6569 2.34315C18.538 1.22433 17.1126 0.462403 15.5607 0.153721C14.0089 -0.15496 12.4003 0.00346625 10.9385 0.608967C9.47672 1.21447 8.22729 2.23985 7.34824 3.55544C6.46919 4.87104 6 6.41775 6 8C6 10.1217 6.84285 12.1566 8.34315 13.6569C9.84344 15.1572 11.8783 16 14 16Z"
@@ -161,10 +186,26 @@ const Sopnser = () => {
 };
 export default Sopnser;
 
-export const Modalss = () => {
+export const Modalss = ({}) => {
+  const { id } = useParams();
+
+  const queryClient = useQueryClient();
+
   const api = useContext(ContextApi);
-  const { data, isLoading, isError } = useQuery("sponsors", () =>
-    api.get("/sponsors")
+
+  // const { data, isLoading, isError } = useQuery("sponsors", () =>
+  //   api.get("/sponsors")
+  // );
+
+  const mutation = useMutation(
+    (data) => {
+      return api.put(`/sponsors/${id}`, data);
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("sponsors");
+      },
+    }
   );
 
   const state = useSelector((state) => state.sponsorsT.sponsors);
@@ -208,11 +249,13 @@ export const Modalss = () => {
   const onFinish = (values) => {
     const newData = {
       ...values,
+      paid: sponsorsI?.paid,
       id: sponsorsI?.id,
     };
-    putSponsors(api, sponsorsI?.id, newData);
+    console.log(newData);
+    mutation.mutate(newData);
 
-    putSponsor(api, sponsorsI?.id, newData);
+    // putSponsor(api, sponsorsI?.id, newData);
     handleCancel();
   };
 
@@ -222,6 +265,7 @@ export const Modalss = () => {
         type="primary"
         onClick={() => {
           showModal();
+          // apii();
         }}
       >
         <EditOutlined /> Tahrirlash
@@ -273,10 +317,13 @@ export const Modalss = () => {
               icon: <InfoCircleOutlined />,
             }}
             rules={[
-              { required: true, message: "Telefon raqam kiritishingiz kerak" },
+              {
+                required: true,
+                message: "Telefon raqam kiritishingiz kerak",
+              },
             ]}
           >
-            <Input placeholder={sponsorsI?.phone} />
+            <Input value={sponsorsI?.phone} />
           </Form.Item>
           <Form.Item
             name={"status"}

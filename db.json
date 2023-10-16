@@ -18,46 +18,48 @@
   },
   "sponsors": [
     {
-      "type": "yuridik",
-      "fullName": "Ayubbek",
-      "phone": "+998 90 546 90 66",
+      "type": "jismoniy",
+      "fullName": "Jasur Arslonov",
+      "phone": "987654321",
       "status": "Tasdiqlangan",
       "sponsorSum": "50000000",
+      "paid": 1000000,
       "id": 1
     },
     {
       "type": "jismoniy",
-      "fullName": "Abror Xabibullayevich new",
+      "fullName": "Jasur test",
       "phone": "987654321",
-      "status": "Moderatsiyada",
-      "sponsorSum": 1500000,
+      "status": "Tasdiqlangan",
+      "sponsorSum": "50000000",
+      "paid": "300000",
       "id": 2
     },
     {
-      "type": "jismoniy",
-      "fullName": "a",
-      "phone": "+998 95 897 98 65",
-      "status": "Tasdiqlangan",
-      "sponsorSum": "50000000",
-      "id": 3
+      "id": 3,
+      "type": "yuridik",
+      "fullName": "Hishim Arslonov",
+      "phone": "987654321",
+      "status": "Bekor qilingan",
+      "paid": 580000,
+      "sponsorSum": 1500000
     },
     {
       "id": 4,
-      "fullName": "Ahmedov Alisher Fazilovich",
-      "phone": "777888999",
-      "sponsorSum": 500000,
-      "paid": 2000000,
-      "date": "2023-09-06T16:53:15.595Z",
-      "status": "Bekor qilingan"
+      "type": "yuridik",
+      "fullName": "Abror Xabibullayevich",
+      "phone": "987654321",
+      "status": "Moderatsiyada",
+      "paid": 580000,
+      "sponsorSum": 1500000
     },
     {
-      "id": 5,
       "fullName": "Xolmirzaev Xurshid Shavkatovich",
       "phone": "111222333",
+      "status": "Tasdiqlangan",
       "sponsorSum": 1000000,
       "paid": 4000000,
-      "date": "2023-09-06T16:53:15.595Z",
-      "status": "Yangi"
+      "id": 5
     },
     {
       "id": 6,
@@ -191,6 +193,41 @@
       "paid": 16000000,
       "date": "2023-09-06T16:53:15.595Z",
       "status": "Yangi"
+    },
+    {
+      "type": "yuridik",
+      "fullName": "Abror Xabibullayevich new",
+      "phone": "+998 90 546 90 66",
+      "status": "Yangi",
+      "sponsorSum": "40000000",
+      "id": 21
+    },
+    {
+      "type": "jismoniy",
+      "fullName": "Test 11111",
+      "phone": "12312",
+      "status": "Moderatsiyada",
+      "sponsorSum": "40000000",
+      "paid": 0,
+      "id": 22
+    },
+    {
+      "fullName": "  const [messageApi, contextHolder] = message.useMessage();",
+      "phone": "+998 90 546 90 66",
+      "sponsorSum": 12000000,
+      "type": "jismoniy",
+      "status": "Yangi",
+      "paid": 0,
+      "id": 23
+    },
+    {
+      "fullName": "const [messageApi, contextHolder] = message.useMessage();",
+      "phone": "+998 11 111 11 11",
+      "sponsorSum": "11111111",
+      "type": "jismoniy",
+      "status": "Yangi",
+      "paid": 0,
+      "id": 24
     }
   ]
 }

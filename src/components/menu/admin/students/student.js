@@ -174,10 +174,10 @@ const Student = () => {
     // ],
 
     dispatch(setEditStudentsData({ newData, index: studentIndex }));
+    handleCancelEditS();
   };
 
   const newSponserS = (value) => {
-    // console.log("a");
     const a = sponsorIndex?.sponses?.map((i) => i.id);
 
     const newData = {
@@ -443,7 +443,7 @@ const Student = () => {
             </Modal>
 
             <Modal
-              title="Basic Modal"
+              title="Edit Student"
               open={isModalOpenEditS}
               onOk={handleCancelEditS}
               onCancel={handleCancelEditS}
@@ -460,11 +460,11 @@ const Student = () => {
                   label="F.I.Sh. (Familiya Ism Sharifingiz)"
                   name={"name"}
                 >
-                  <Input placeholder={sponsorIndex?.name} />
+                  <Input defaultValue={sponsorIndex?.name} />
                 </Form.Item>
 
                 <Form.Item className="" label="Telefon raqam" name={"phone"}>
-                  <Input placeholder={sponsorIndex?.phone} />
+                  <Input defaultValue={sponsorIndex?.phone} />
                 </Form.Item>
 
                 <Form.Item name={"universitet"} label={"OTM"}>

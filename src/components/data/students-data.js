@@ -14,7 +14,7 @@ const StudentData = [
         paid: 10000000,
       },
     ],
-  },
+  }, 
 
   {
     id: 2,

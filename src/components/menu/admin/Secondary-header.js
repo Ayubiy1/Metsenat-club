@@ -67,7 +67,11 @@ export const SecondaryHeader = ({ tab, filter, setFilter }) => {
   };
 
   return (
-    <div className={"flex items-center justify-between mt-5 mb-4"}>
+    <div
+      className={
+        "flex flex-wrap gap-10 items-center justify-center lg:justify-between mt-5 mb-4"
+      }
+    >
       <Radio.Group>
         <Button
           value={"dashboard"}

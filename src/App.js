@@ -1,6 +1,5 @@
 import { EllipsisOutlined } from "@ant-design/icons";
 import { Divider, Tour } from "antd";
-
 import {
   BrowserRouter,
   Routes,
@@ -29,8 +28,9 @@ import Sigin from "./components/sigin/sigin";
 import { AddStudent } from "./components/menu/admin/students/new-student";
 import Student from "./components/menu/admin/students/student";
 import SponserRegister from "./components/menu/sponser-register/menu";
-import { QueryClient, QueryClientProvider } from "react-query";
+import { QueryClient, QueryClientProvider, useMutation } from "react-query";
 import { ContextApi, api } from "./components/data/api";
+import axios from "axios";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -98,7 +98,7 @@ function App() {
   const [loginPassword, setLoginPassword] = useState("");
 
   useEffect(() => {
-    if (activAdmin === true && location.pathname == "/login") {
+    if (activAdmin == true && location.pathname == "/login") {
       navigate("/admin/dashboard");
     } else if (!activAdmin) {
       navigate("/login");
@@ -112,6 +112,13 @@ function App() {
     }
   };
 
+  // const { mutate } = useMutation(() => {
+  //   return axios.post("http://192.168.1.48:8080/home", {
+  //     id: 2,
+  //     name: "Test",
+  //   });
+  // });
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
@@ -123,6 +130,8 @@ function App() {
               onClose={() => setOpen(false)}
               steps={steps}
             />
+
+            {/* <button onClick={mutate}>Add</button> */}
 
             <Routes>
               <Route

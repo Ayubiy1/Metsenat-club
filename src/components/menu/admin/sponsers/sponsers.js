@@ -21,6 +21,7 @@ const Container = ({ children, className }) => {
 
 export const Sponsors = ({ filter, setFilter }) => {
   const api = useContext(ContextApi);
+
   const { data, isLoading, isError } = useQuery("sponsors", () =>
     api.get("/sponsors")
   );
@@ -35,13 +36,13 @@ export const Sponsors = ({ filter, setFilter }) => {
 
   const navigate = useNavigate();
 
-  const dataA = sponsersDataR?.filter((i) =>
+  const dataA = data?.data?.filter((i) =>
     values !== ""
       ? i.fullName.toLocaleLowerCase().includes(values.toLocaleLowerCase())
       : i.fullName
   );
 
-  // const filterData = data.filter((i) => i);
+  // const filterDat a = data.filter((i) => i);
   // console.log(filterData);
 
   const columnsSponsors = [
@@ -140,7 +141,9 @@ export const Sponsors = ({ filter, setFilter }) => {
 
         <div className="">
           <Table
-            dataSource={data?.data}
+            loading={isLoading}
+            indentSize={100}
+            dataSource={dataA}
             columns={columnsSponsors}
             pagination={{
               pageSize: 5,

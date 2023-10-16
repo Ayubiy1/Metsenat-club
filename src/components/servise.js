@@ -1,9 +1,15 @@
+// import { useParams } from "react-router";
+
+// const { id } = useParams();
+
 export const getSponsors = (api) => api.get("/sponsors");
 export const getSponsor = (api, id) => api.get(`/sponsors/${id}`);
 
 export const putSponsors = (api, id, data) => api.put(`/sponsors/${id}`, data);
 
 export const putSponsor = (api, id, data) => console.log(data);
+
+export const postSponsors = (api, data) => api.post(`/sponsors`, data);
 
 export const getStudents = (api) => api.get("/students");
 export const getStudent = (api, id) => api.get(`/students/${id}`);

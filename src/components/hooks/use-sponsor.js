@@ -18,12 +18,15 @@ export const useSponsor = () => {
   // useEffect(() => {}, [sponsorsT]);
   const sponsorIndex = useMemo(
     () => data?.data?.findIndex((item) => item?.id == id),
-    [data, id, api]
+    [data?.data, id, api]
   );
+  // const sponsorIndex = 1;
+
   const sponsorI = useMemo(
     () => (sponsorIndex > -1 ? data?.data[sponsorIndex] : {}),
-    [sponsorIndex, data, api]
+    [sponsorIndex, id, api, data?.data]
   );
+  // console.log(sponsorI);
 
   return [sponsorI, sponsorIndex]; // Obyekt o'rniga massiv qaytaring
 };

@@ -94,7 +94,7 @@ export const RechartsExample = () => {
       <Container>
         <SecondaryHeader tab={"dashboard"} />
 
-        <div className="flex items-center justify-between">
+        <div className="flex flex-wrap gap-10 items-center justify-center xl:justify-between">
           <div className="flex items-center gap-4 p-2 px-5 rounded-md bg-[#fff]">
             <svg
               width="48"
