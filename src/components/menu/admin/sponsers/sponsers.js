@@ -1,7 +1,7 @@
 import { setSponser } from "../../../redux/sponser-redux";
 import SponsorsData from "../../../data/sponsors-data";
 import React, { useContext, useEffect, useState } from "react";
-import { Radio, Button, Table, Badge, Tag } from "antd";
+import { Radio, Button, Table, Badge, Tag, Typography } from "antd";
 import dayjs from "dayjs";
 import { useNavigate, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { ContainerFilled } from "@ant-design/icons";
 import { useSponsor } from "../../../hooks/use-sponsor";
 import { ContextApi } from "../../../data/api";
 import { useQuery } from "react-query";
+import { setPponserIndex } from "../../../redux/new-studentR";
 
 const Container = ({ children, className }) => {
   return (
@@ -21,18 +22,11 @@ const Container = ({ children, className }) => {
 
 export const Sponsors = ({ filter, setFilter }) => {
   const api = useContext(ContextApi);
-
   const { data, isLoading, isError } = useQuery("sponsors", () =>
     api.get("/sponsors")
   );
-
   const values = useSelector((store) => store.value.valueStudents);
-  const sponsersDataR = useSelector((store) => store.sponsorsT.sponsors);
   const sponsorsData = useSelector((state) => state.studentsData.sponsorsData);
-  console.log(sponsorsData);
-
-  const [sponsorsI, sponsorIndex] = useSponsor();
-  // const [filterData, setFiltera] = useState(SponsorsData);
 
   const dispatch = useDispatch();
 
@@ -43,9 +37,6 @@ export const Sponsors = ({ filter, setFilter }) => {
       ? i.fullName.toLocaleLowerCase().includes(values.toLocaleLowerCase())
       : i.fullName
   );
-
-  // const filterDat a = data.filter((i) => i);
-  // console.log(filterData);
 
   const columnsSponsors = [
     {
@@ -98,14 +89,14 @@ export const Sponsors = ({ filter, setFilter }) => {
       ),
     },
     {
-      title: "Amallar",
-      dataIndex: "",
-      key: "id",
-      render: (value, row) => (
+      title: "action",
+      dataIndex: "id",
+      render: (value, row, index) => (
         <Button
           className=" border-none"
           onClick={() => {
-            navigate(`/admin/sponsors/${value.id}`);
+            navigate(`/admin/sponsors/${row.id}`);
+            dispatch(setPponserIndex(index));
           }}
         >
           <svg
@@ -129,8 +120,6 @@ export const Sponsors = ({ filter, setFilter }) => {
       ),
     },
   ];
-
-  const params = useParams();
 
   return (
     <>

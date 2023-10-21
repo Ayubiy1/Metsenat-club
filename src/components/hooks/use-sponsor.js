@@ -6,9 +6,11 @@ import { ContextApi } from "../data/api";
 
 export const useSponsor = () => {
   const api = useContext(ContextApi);
-  const { data, isLoading, isError } = useQuery("sponsors", () =>
-    api.get("/sponsors")
-  );
+  // const { data, isLoading, isError } = useQuery("sponsors", () =>
+  //   api.get("/sponsors")
+  // );
+
+  const data = useSelector((state) => state.studentsData.sponsorsData);
 
   let [searchParams, setSearchParams] = useSearchParams();
   const { id } = useParams();
@@ -17,14 +19,14 @@ export const useSponsor = () => {
 
   // useEffect(() => {}, [sponsorsT]);
   const sponsorIndex = useMemo(
-    () => data?.data?.findIndex((item) => item?.id == id),
-    [data?.data, id, api]
+    () => data?.findIndex((item) => item?.id == id),
+    [data, id, api]
   );
   // const sponsorIndex = 1;
 
   const sponsorI = useMemo(
-    () => (sponsorIndex > -1 ? data?.data[sponsorIndex] : {}),
-    [sponsorIndex, id, api, data?.data]
+    () => (sponsorIndex > -1 ? data[sponsorIndex] : {}),
+    [sponsorIndex, id, api, data]
   );
   // console.log(sponsorI);
 

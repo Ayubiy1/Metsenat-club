@@ -1,5 +1,3 @@
-import { Sponsors } from "../sponsers/sponsers";
-import { setSponser } from "../../../redux/sponser-redux";
 import { useDispatch, useSelector } from "react-redux";
 import { useSponsor } from "../../../hooks/use-sponsor";
 
@@ -23,7 +21,7 @@ import { sponsorStatuses, sponsorSumma } from "../../../data/sponsors-status";
 import { useNavigate, useParams } from "react-router";
 import { ContextApi } from "../../../data/api";
 import { useMutation, useQuery, useQueryClient } from "react-query";
-import axios from "axios";
+import { setEditSponserData } from "../../../redux/new-studentR";
 const { Title } = Typography;
 
 const Container = ({ children, className }) => {
@@ -33,12 +31,6 @@ const Container = ({ children, className }) => {
 };
 
 const Sopnser = () => {
-  const { id } = useParams();
-
-  const api = useContext(ContextApi);
-
-  const sponserDataa = useSelector((state) => state.sponsorsT.sponsors);
-
   const [sponsorsI, sponsorIndex] = useSponsor();
 
   const navigate = useNavigate();
@@ -164,10 +156,6 @@ export const Modalss = ({}) => {
 
   const api = useContext(ContextApi);
 
-  // const { data, isLoading, isError } = useQuery("sponsors", () =>
-  //   api.get("/sponsors")
-  // );
-
   const mutation = useMutation(
     (data) => {
       return api.put(`/sponsors/${id}`, data);
@@ -223,8 +211,9 @@ export const Modalss = ({}) => {
       paid: sponsorsI?.paid,
       id: sponsorsI?.id,
     };
-    console.log(newData);
-    mutation.mutate(newData);
+
+    dispatch(setEditSponserData({ newData }));
+    // mutation.mutate(newData);
 
     // putSponsor(api, sponsorsI?.id, newData);
     handleCancel();

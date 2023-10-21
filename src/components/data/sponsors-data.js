@@ -1,7 +1,7 @@
 const SponsorsData = [
   {
     id: 1,
-    fullName: "Alimov Abror Xabibullayevich",
+    fullName: "Alimov Abror Xabibullayevich test",
     phone: "1231231321",
     sponsorSum: 30000000,
     paid: 10000000,

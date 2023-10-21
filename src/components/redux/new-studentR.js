@@ -7,6 +7,7 @@ const AddStudent = createSlice({
   initialState: {
     studentData: StudentData,
     sponsorsData: SponsorsData,
+    sponserIndex: 0,
   },
   reducers: {
     setStudentsData: (state, action) => {
@@ -19,13 +20,18 @@ const AddStudent = createSlice({
     setEditStudentsDataAddSponser: (state, action) => {
       const { index, newData } = action.payload;
 
-      // O'zgartirilgan student obyektini olish
       const editedStudent = state.studentData[index];
 
-      // Yangi sponsorlikni o'zgartirilgan student obyektining `sponses` ga qo'shish
       editedStudent.sponses.push(newData);
 
       state.studentData[index] = editedStudent;
+    },
+
+    setEditSponserData: (state, action) => {
+      state.sponsorsData[state.sponserIndex] = action.payload.newData;
+    },
+    setPponserIndex: (state, action) => {
+      state.sponserIndex = action.payload;
     },
   },
 });
@@ -34,6 +40,8 @@ export const {
   setStudentsData,
   setEditStudentsData,
   setEditStudentsDataAddSponser,
+  setEditSponserData,
+  setPponserIndex,
 } = AddStudent.actions;
 
 export default AddStudent.reducer;
