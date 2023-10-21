@@ -13,7 +13,6 @@ export default configureStore({
     addStudent: modalAdd,
     studentsInfo: StudentsInfoa,
     value: Values,
-    // sponser: SponserR,
     sponsorsT: sponsorsR,
     studentsData: StudentsD,
     StudentD: StudentD,

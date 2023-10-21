@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import StudentData from "../data/students-data";
+import SponsorsData from "../data/sponsors-data";
 
 const AddStudent = createSlice({
   name: "newStudent",
   initialState: {
     studentData: StudentData,
+    sponsorsData: SponsorsData,
   },
   reducers: {
     setStudentsData: (state, action) => {

@@ -35,34 +35,7 @@ const Container = ({ children, className }) => {
 const Sopnser = () => {
   const { id } = useParams();
 
-  // const mutation = useMutation((data) => {
-  //   return api.put(`/sponsors/${id}`, data);
-  // });
-
   const api = useContext(ContextApi);
-
-  const { mutate } = useMutation(() => {
-    return axios.post("http://192.168.1.48:8080/university", {
-      name: "Test",
-    });
-  });
-
-  // const { data: daataa } = useQuery(() => {
-  //   return axios.get("http://192.168.1.48:8080/university");
-  // });
-  // console.log(daataa);
-
-  let hel = async () => {
-    try {
-      let respons = await axios.get("http://192.168.1.48:8080/university");
-
-      console.log(respons.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  hel();
 
   const sponserDataa = useSelector((state) => state.sponsorsT.sponsors);
 
@@ -71,8 +44,6 @@ const Sopnser = () => {
   const navigate = useNavigate();
   return (
     <>
-      {/* <button onClick={mutate}>Add</button> */}
-
       <div className="bg-[#fff]">
         <Container>
           <div className="flex items-center gap-5">

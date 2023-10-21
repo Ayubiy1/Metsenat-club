@@ -28,6 +28,8 @@ export const Sponsors = ({ filter, setFilter }) => {
 
   const values = useSelector((store) => store.value.valueStudents);
   const sponsersDataR = useSelector((store) => store.sponsorsT.sponsors);
+  const sponsorsData = useSelector((state) => state.studentsData.sponsorsData);
+  console.log(sponsorsData);
 
   const [sponsorsI, sponsorIndex] = useSponsor();
   // const [filterData, setFiltera] = useState(SponsorsData);
@@ -143,13 +145,14 @@ export const Sponsors = ({ filter, setFilter }) => {
           <Table
             loading={isLoading}
             indentSize={100}
-            dataSource={dataA}
+            dataSource={sponsorsData}
             columns={columnsSponsors}
             pagination={{
               pageSize: 5,
             }}
             rowKey={(record) => record.id}
           />
+          adasda
         </div>
       </Container>
     </>
