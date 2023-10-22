@@ -1,6 +1,6 @@
 import { setSponser } from "../../../redux/sponser-redux";
 import SponsorsData from "../../../data/sponsors-data";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { Radio, Button, Table, Badge, Tag, Typography } from "antd";
 import dayjs from "dayjs";
 import { useNavigate, useParams } from "react-router";
@@ -11,6 +11,7 @@ import { useSponsor } from "../../../hooks/use-sponsor";
 import { ContextApi } from "../../../data/api";
 import { useQuery } from "react-query";
 import { setPponserIndex } from "../../../redux/new-studentR";
+import { useLocalStorageState } from "ahooks";
 
 const Container = ({ children, className }) => {
   return (
@@ -28,6 +29,12 @@ export const Sponsors = ({ filter, setFilter }) => {
   const values = useSelector((store) => store.value.valueStudents);
   const sponsorsData = useSelector((state) => state.studentsData.sponsorsData);
 
+  const [sponserIndexL, setSponserIndexL] = useLocalStorageState(
+    "sopnser-index",
+    {
+      defaultValue: 0,
+    }
+  );
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -37,6 +44,12 @@ export const Sponsors = ({ filter, setFilter }) => {
       ? i.fullName.toLocaleLowerCase().includes(values.toLocaleLowerCase())
       : i.fullName
   );
+
+  const sponsorIndex = useMemo(
+    () => dataFilter?.findIndex((item) => item?.id == sponserIndexL),
+    [sponserIndexL]
+  );
+  // console.log(sponsorIndex);
 
   // const dataA = data?.data?.filter((i) =>
   //   values !== ""
@@ -102,7 +115,9 @@ export const Sponsors = ({ filter, setFilter }) => {
           className=" border-none"
           onClick={() => {
             navigate(`/admin/sponsors/${row.id}`);
-            dispatch(setPponserIndex(index));
+            setSponserIndexL(row?.id);
+            dispatch(setPponserIndex(sponsorIndex));
+            // console.log(sponserIndexL);
           }}
         >
           <svg

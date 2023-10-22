@@ -29,7 +29,16 @@ const AddStudent = createSlice({
     },
 
     setEditSponserData: (state, action) => {
-      state.sponsorsData[state.sponserIndex] = action.payload.newData;
+      const { index, newData } = action.payload;
+
+      // O'zgartirilgan student obyektini olish
+      // const editedStudent = state.sponsorsData[index];
+
+      // editedStudent.push(newData);
+
+      // state.sponsorsData[index] = editedStudent;
+
+      state.sponsorsData[index] = newData;
     },
     setPponserIndex: (state, action) => {
       state.sponserIndex = action.payload;

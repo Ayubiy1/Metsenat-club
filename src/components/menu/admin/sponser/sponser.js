@@ -17,7 +17,7 @@ import {
   Typography,
   message,
 } from "antd";
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { sponsorStatuses, sponsorSumma } from "../../../data/sponsors-status";
 import { useNavigate, useParams } from "react-router";
 import { ContextApi } from "../../../data/api";
@@ -33,6 +33,9 @@ const Container = ({ children, className }) => {
 
 const Sopnser = () => {
   const [sponsorsI, sponsorIndex] = useSponsor();
+  const state = useSelector((state) => state.studentsData.sponserIndex);
+  // console.log(sponsorsI);
+  // console.log(state);
 
   const navigate = useNavigate();
   return (
@@ -173,7 +176,7 @@ export const Modalss = ({}) => {
   );
 
   const state = useSelector((state) => state.sponsorsT.sponsors);
-  const sponsorsData = useSelector((state) => state.sponsorsT.sponsorsData);
+  const sponsorsDataa = useSelector((state) => state.StudentD.sponsorsData);
 
   const [form] = Form.useForm();
 
@@ -192,14 +195,20 @@ export const Modalss = ({}) => {
     setIsModalOpen(false);
   };
 
+  const studentIndex = useMemo(
+    () => sponsorsDataa?.findIndex((item) => item?.id == id),
+    [id]
+  );
+  console.log(studentIndex);
+
   const onFinish = (values) => {
     const newData = {
       ...values,
       paid: sponsorsI?.paid,
       id: sponsorsI?.id,
     };
-    dispatch(setEditSponserData({ newData }));
-    localStorage.setItem("sponsors-data", sponsorsData);
+    dispatch(setEditSponserData({ newData, index: studentIndex }));
+    // localStorage.setItem("sponsors-data", sponsorsData);
     info();
     handleCancel();
   };

@@ -26,7 +26,7 @@ export const useSponsor = () => {
 
   const sponsorI = useMemo(
     () => (sponsorIndex > -1 ? data[sponsorIndex] : {}),
-    [sponsorIndex, id, api, data]
+    [sponsorIndex, id, data]
   );
   // console.log(sponsorI);
 
