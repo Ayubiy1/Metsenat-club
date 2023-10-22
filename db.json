@@ -228,6 +228,15 @@
       "status": "Yangi",
       "paid": 0,
       "id": 24
+    },
+    {
+      "fullName": "adadadasdasd",
+      "phone": "123123",
+      "sponsorSum": 12000000,
+      "type": "jismoniy",
+      "status": "Yangi",
+      "paid": 0,
+      "id": 25
     }
   ]
 }

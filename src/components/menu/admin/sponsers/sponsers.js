@@ -161,6 +161,7 @@ export const Sponsors = ({ filter, setFilter }) => {
               pageSize: 5,
             }}
             rowKey={(record) => record.id}
+            className="w-[1300px] overflow-scroll"
           />
         </div>
       </Container>
