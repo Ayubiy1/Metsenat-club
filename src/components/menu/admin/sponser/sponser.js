@@ -15,12 +15,13 @@ import {
   Select,
   Tag,
   Typography,
+  message,
 } from "antd";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { sponsorStatuses, sponsorSumma } from "../../../data/sponsors-status";
 import { useNavigate, useParams } from "react-router";
 import { ContextApi } from "../../../data/api";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { setEditSponserData } from "../../../redux/new-studentR";
 const { Title } = Typography;
 
@@ -151,9 +152,13 @@ export default Sopnser;
 
 export const Modalss = ({}) => {
   const { id } = useParams();
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const info = () => {
+    messageApi.success("Homiy ma'lumotlari o'zgartirildi");
+  };
 
   const queryClient = useQueryClient();
-
   const api = useContext(ContextApi);
 
   const mutation = useMutation(
@@ -168,28 +173,10 @@ export const Modalss = ({}) => {
   );
 
   const state = useSelector((state) => state.sponsorsT.sponsors);
+  const sponsorsData = useSelector((state) => state.sponsorsT.sponsorsData);
 
   const [form] = Form.useForm();
-  const onGenderChange = (value) => {
-    switch (value) {
-      case "male":
-        form.setFieldsValue({
-          note: "Hi, man!",
-        });
-        break;
-      case "female":
-        form.setFieldsValue({
-          note: "Hi, lady!",
-        });
-        break;
-      case "other":
-        form.setFieldsValue({
-          note: "Hi there!",
-        });
-        break;
-      default:
-    }
-  };
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sponsorsI, sponsorIndex] = useSponsor();
 
@@ -211,16 +198,15 @@ export const Modalss = ({}) => {
       paid: sponsorsI?.paid,
       id: sponsorsI?.id,
     };
-
     dispatch(setEditSponserData({ newData }));
-    // mutation.mutate(newData);
-
-    // putSponsor(api, sponsorsI?.id, newData);
+    localStorage.setItem("sponsors-data", sponsorsData);
+    info();
     handleCancel();
   };
 
   return (
     <>
+      {contextHolder}
       <Button
         type="primary"
         onClick={() => {

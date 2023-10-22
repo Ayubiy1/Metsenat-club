@@ -32,11 +32,17 @@ export const Sponsors = ({ filter, setFilter }) => {
 
   const navigate = useNavigate();
 
-  const dataA = data?.data?.filter((i) =>
+  const dataFilter = sponsorsData?.filter((i) =>
     values !== ""
       ? i.fullName.toLocaleLowerCase().includes(values.toLocaleLowerCase())
       : i.fullName
   );
+
+  // const dataA = data?.data?.filter((i) =>
+  //   values !== ""
+  //     ? i.fullName.toLocaleLowerCase().includes(values.toLocaleLowerCase())
+  //     : i.fullName
+  // );
 
   const columnsSponsors = [
     {
@@ -134,14 +140,13 @@ export const Sponsors = ({ filter, setFilter }) => {
           <Table
             loading={isLoading}
             indentSize={100}
-            dataSource={sponsorsData}
+            dataSource={dataFilter}
             columns={columnsSponsors}
             pagination={{
               pageSize: 5,
             }}
             rowKey={(record) => record.id}
           />
-          adasda
         </div>
       </Container>
     </>
