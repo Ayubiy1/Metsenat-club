@@ -80,8 +80,8 @@ export const SecondaryHeader = ({ tab, filter, setFilter }) => {
           }}
           className={
             "/admin/dashboard" == location.pathname
-              ? "bg-blue-600 text-white hover:text-white rounded-none px-10 rounded-l-md"
-              : " rounded-none px-10 rounded-l-md"
+              ? "w-[100%] sm:w-[150px] my-1 bg-blue-600 text-white hover:text-white rounded-none px-10 rounded-l-md"
+              : " rounded-none px-10 w-[100%] sm:w-[150px] my-1 rounded-l-md"
           }
         >
           Dashboard
@@ -94,8 +94,8 @@ export const SecondaryHeader = ({ tab, filter, setFilter }) => {
           }}
           className={
             "/admin/sponsors" == location.pathname
-              ? "bg-blue-600 text-white hover:text-white rounded-none px-10"
-              : " rounded-none px-10"
+              ? "w-[100%] sm:w-[150px] my-1 bg-blue-600 text-white hover:text-white rounded-none px-10"
+              : " rounded-none px-10 w-[100%] sm:w-[150px] my-1"
           }
         >
           Homiylar
@@ -108,8 +108,8 @@ export const SecondaryHeader = ({ tab, filter, setFilter }) => {
           }}
           className={
             "/admin/students" == location.pathname
-              ? "bg-blue-600 text-white hover:text-white rounded-none px-10 rounded-r-md"
-              : " rounded-none px-10 rounded-r-md"
+              ? "w-[100%] sm:w-[150px] my-1 bg-blue-600 text-white hover:text-white rounded-none px-10 rounded-r-md"
+              : " rounded-none px-10 w-[100%] sm:w-[150px] my-1 rounded-r-md"
           }
         >
           Talabalar
@@ -155,7 +155,8 @@ export const SecondaryHeader = ({ tab, filter, setFilter }) => {
             onChange={(e) => dispatch(targetValue(e.target.value))}
           />
         </div>
-        <Button
+
+        {/* <Button
           className="flex items-center text-[16px] font-semibold px-9 py-4 bg-[#EDF1FD] border-none text-[#3365FC]"
           onClick={showModal}
         >
@@ -172,7 +173,8 @@ export const SecondaryHeader = ({ tab, filter, setFilter }) => {
             />
           </svg>
           Filter
-        </Button>
+        </Button> */}
+
         <Modal
           title="Basic Modal"
           open={isModalOpen}

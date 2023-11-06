@@ -117,7 +117,6 @@ export const Sponsors = ({ filter, setFilter }) => {
             navigate(`/admin/sponsors/${row.id}`);
             setSponserIndexL(row?.id);
             dispatch(setPponserIndex(sponsorIndex));
-            // console.log(sponserIndexL);
           }}
         >
           <svg
@@ -153,7 +152,7 @@ export const Sponsors = ({ filter, setFilter }) => {
 
         <div className="">
           <Table
-            loading={isLoading}
+            // loading={isLoading}
             indentSize={100}
             dataSource={dataFilter}
             columns={columnsSponsors}

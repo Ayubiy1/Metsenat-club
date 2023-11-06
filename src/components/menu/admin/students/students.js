@@ -132,6 +132,7 @@ const Students = ({ filter, setFilter }) => {
           pagination={{
             pageSize: 5,
           }}
+          className="w-[1300px] overflow-scroll"
         />
       </Container>
     </>

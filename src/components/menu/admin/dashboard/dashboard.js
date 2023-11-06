@@ -198,31 +198,33 @@ export const RechartsExample = () => {
           </div>
         </div>
 
-        <LineChart
-          className="mx-auto  mt-8"
-          width={1200}
-          height={400}
-          data={data}
-        >
-          <Line
-            type="monotone"
-            dataKey="countSponsors"
-            stroke="#4C6FFF"
-            strokeWidth={3}
-          />
+        <div className="w-[1300px] overflow-x-scroll">
+          <LineChart
+            className="mx-auto  mt-8"
+            width={1200}
+            height={400}
+            data={data}
+          >
+            <Line
+              type="monotone"
+              dataKey="countSponsors"
+              stroke="#4C6FFF"
+              strokeWidth={3}
+            />
 
-          <Line
-            type="monotone"
-            dataKey="countStudents"
-            stroke="#FF92AE"
-            strokeWidth={3}
-          />
-          <CartesianGrid stroke="#ccc" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-        </LineChart>
+            <Line
+              type="monotone"
+              dataKey="countStudents"
+              stroke="#FF92AE"
+              strokeWidth={3}
+            />
+            <CartesianGrid stroke="#ccc" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+          </LineChart>
+        </div>
       </Container>
     </div>
   );
