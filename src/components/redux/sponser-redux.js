@@ -7,13 +7,11 @@ const SponserR = createSlice({
   },
   reducers: {
     setSponser: (state, action) => {
-      state.sponser = action.payload;
+      console.log(action.payload);
+      // state.sponser = action.payload;
     },
   },
 });
 
 export const { setSponser } = SponserR.actions;
-// console.log(setSponser);
 export default SponserR.reducer;
-
-// console.log(SponserR);

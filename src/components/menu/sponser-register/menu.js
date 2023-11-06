@@ -11,6 +11,7 @@ import { useNavigate } from "react-router";
 import { useMutation, useQueryClient } from "react-query";
 import { api } from "../../data/api";
 import axios from "axios";
+import { setSponser } from "../../redux/sponser-redux";
 
 const SponserRegister = () => {
   const studentSsD = useSelector((state) => state?.sponsorsT?.sponsors);
@@ -63,7 +64,6 @@ const SponserRegister = () => {
   // };
 
   const addSponser = (value) => {
-    const sponsorSum = another == 1 ? anotherValue : another;
     const newData = {
       ...value,
       sponsorSum: another == 1 ? anotherValue : another,
@@ -73,7 +73,9 @@ const SponserRegister = () => {
     };
     console.log(newData);
 
-    mutasion.mutate(newData);
+    dispatch(setSponser(newData));
+
+    // mutasion.mutate(newData);
   };
 
   // try {
@@ -238,8 +240,8 @@ const SponserRegister = () => {
                   </p>
 
                   <div className="flex gap-[17px] items-center justify-center flex-wrap">
-                    <button
-                      className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                    <Button
+                      className={`flex items-center justify-center w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
                         another == 10000000
                           ? "border-[#2E5BFF] border-3"
                           : "border-1 border-solid border-[#E0E7FF]"
@@ -280,10 +282,10 @@ const SponserRegister = () => {
                           UZB
                         </span>
                       </span>
-                    </button>
+                    </Button>
 
-                    <button
-                      className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                    <Button
+                      className={`flex items-center justify-center w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
                         another == 3000000
                           ? "border-[#2E5BFF] border-3"
                           : "border-1 border-solid border-[#E0E7FF]"
@@ -324,10 +326,10 @@ const SponserRegister = () => {
                           UZB
                         </span>
                       </span>
-                    </button>
+                    </Button>
 
-                    <button
-                      className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                    <Button
+                      className={`flex items-center justify-center w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
                         another == 7000000
                           ? "border-[#2E5BFF] border-3"
                           : "border-1 border-solid border-[#E0E7FF]"
@@ -368,10 +370,10 @@ const SponserRegister = () => {
                           UZB
                         </span>
                       </span>
-                    </button>
+                    </Button>
 
-                    <button
-                      className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                    <Button
+                      className={`flex items-center justify-center w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
                         another == 95000000
                           ? "border-[#2E5BFF] border-3"
                           : "border-1 border-solid border-[#E0E7FF]"
@@ -412,10 +414,10 @@ const SponserRegister = () => {
                           UZB
                         </span>
                       </span>
-                    </button>
+                    </Button>
 
-                    <button
-                      className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                    <Button
+                      className={`flex items-center justify-center w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
                         another == 12000000
                           ? "border-[#2E5BFF] border-3"
                           : "border-1 border-solid border-[#E0E7FF]"
@@ -456,10 +458,10 @@ const SponserRegister = () => {
                           UZB
                         </span>
                       </span>
-                    </button>
+                    </Button>
 
-                    <button
-                      className={`w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
+                    <Button
+                      className={`flex items-center justify-center w-[100px] h-[60px] rounded-md relative bordernone sm:w-[188px] bg-transparent ${
                         another == anotherValue
                           ? "border-[#2E5BFF] border-3"
                           : "border-1 border-solid border-[#E0E7FF]"
@@ -497,7 +499,7 @@ const SponserRegister = () => {
                           </svg>
                         </span>
                       </span>
-                    </button>
+                    </Button>
                   </div>
 
                   {another == anotherValue ? (

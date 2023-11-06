@@ -198,13 +198,8 @@ export const RechartsExample = () => {
           </div>
         </div>
 
-        <div className="w-[1300px] overflow-x-scroll">
-          <LineChart
-            className="mx-auto  mt-8"
-            width={1200}
-            height={400}
-            data={data}
-          >
+        <div className="w-[100%] overflow-scroll">
+          <LineChart className="mt-8" width={1200} height={400} data={data}>
             <Line
               type="monotone"
               dataKey="countSponsors"

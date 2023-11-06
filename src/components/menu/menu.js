@@ -1,41 +1,12 @@
-import { Radio } from "antd";
-import { Outlet, useLocation } from "react-router";
-import { Nav, NavLink } from "react-router-dom";
-import { useLocalStorageState } from "ahooks";
-import styled from "styled-components";
-import { blue } from "@ant-design/colors";
-import { useState } from "react";
-import { targetValue } from "../redux/slice";
-import { useDispatch, useSelector } from "react-redux";
-import { SecondaryHeader } from "./admin/Secondary-header";
+import { Outlet } from "react-router";
 
-// import { useState } from "react";
 const Container = ({ children, className }) => {
   return (
     <div className={"px-3 md:px-16 lg:px-[120px] " + className}>{children}</div>
   );
 };
 
-export const StyledTab = styled(Radio.Group)`
-  .ant-radio-button-wrapper-checked {
-    background-color: ${blue[5]};
-    color: white;
-    &:hover {
-      color: white;
-    }
-  }
-`;
-
 const Menu = ({ login, setActivAdmin }) => {
-  const values = useSelector((store) => store.value.valueStudents);
-
-  const [sponsorTab, setSponsorTab] = useLocalStorageState("Dashboard", {
-    defaultValue: "dashboard",
-  });
-  const location = useLocation();
-  const dispatch = useDispatch();
-  const [activate, setActiv] = useState(1);
-
   return (
     <>
       <div className="bg-white pb-4">
@@ -112,26 +83,28 @@ const Menu = ({ login, setActivAdmin }) => {
                   />
                 </svg>
               </div>
-              <div className="flex items-center justify-between w-[200px]">
-                <div className="flex p-2 py-0 rounded-md items-center bg-[#e5e5e5]">
-                  <p style={{ fontFamily: "SF Pro Text" }} className="mx-3">
-                    Shohrux
-                  </p>
-                  <span className=" bg-[#00AE69] pt-3 px-3 rounded-md">
-                    <svg
-                      width="27"
-                      height="27"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="mb-[-3px]"
-                    >
-                      <path
-                        d="M16.621 17.38C15.243 18.118 13.669 18.54 11.998 18.54C10.328 18.54 8.755 18.12 7.377 17.38C4.401 18.162 2.069 20.015 1 24H23C21.931 20.014 19.599 18.161 16.621 17.38ZM12 16C16.418 16 20 12.418 20 8C20 3.582 16.418 0 12 0C7.582 0 4 3.582 4 8C4 12.418 7.582 16 12 16ZM17.349 10.667C16.364 12.635 14.351 14 12 14C9.649 14 7.636 12.635 6.651 10.667H17.349Z"
-                        fill="#F1F1F3"
-                      />
-                    </svg>
-                  </span>
+              <div className="flex items-center justify-between max-w-[200px]">
+                <div className="hidden sm:block">
+                  <div className="flex p-2 py-0 rounded-md items-center bg-[#e5e5e5]">
+                    <p style={{ fontFamily: "SF Pro Text" }} className="mx-3">
+                      Shohrux
+                    </p>
+                    <span className=" bg-[#00AE69] pt-3 px-3 rounded-md">
+                      <svg
+                        width="27"
+                        height="27"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="mb-[-3px]"
+                      >
+                        <path
+                          d="M16.621 17.38C15.243 18.118 13.669 18.54 11.998 18.54C10.328 18.54 8.755 18.12 7.377 17.38C4.401 18.162 2.069 20.015 1 24H23C21.931 20.014 19.599 18.161 16.621 17.38ZM12 16C16.418 16 20 12.418 20 8C20 3.582 16.418 0 12 0C7.582 0 4 3.582 4 8C4 12.418 7.582 16 12 16ZM17.349 10.667C16.364 12.635 14.351 14 12 14C9.649 14 7.636 12.635 6.651 10.667H17.349Z"
+                          fill="#F1F1F3"
+                        />
+                      </svg>
+                    </span>
+                  </div>
                 </div>
                 <button
                   className="bg-transparent border-none cursor-pointer"
@@ -160,7 +133,7 @@ const Menu = ({ login, setActivAdmin }) => {
           </header>
         </Container>
       </div>
-      <Outlet />
+      <Outlet />  
     </>
   );
 };

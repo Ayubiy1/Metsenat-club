@@ -54,15 +54,15 @@ export const AddStudent = () => {
         </div>
 
         <div className="flex justify-center mt-10">
-          <div className="flex flex-col bg-[#fff] rounded-xl shadow-lg w-[700px] h-[400px]">
+          <div className="flex flex-col bg-[#fff] rounded-xl shadow-lg minw-[400px] w-[600px]">
             <Form
               layout="vertical"
               className="w-[90%] mt-5 mx-auto"
               onFinish={onfinish}
             >
-              <div className="flex items-center justify-between gap-3">
+              <div className="sm:flex items-center justify-between gap-3">
                 <Form.Item
-                  className="w-[50%]"
+                  className="sm:w-[50%]"
                   label="F.I.Sh. (Familiya Ism Sharif)"
                   rules={[
                     {
@@ -77,7 +77,7 @@ export const AddStudent = () => {
                 </Form.Item>
 
                 <Form.Item
-                  className="w-[50%]"
+                  className="sm:w-[50%]"
                   label="Telefon raqam"
                   name={"phone"}
                   tooltip={{
@@ -108,14 +108,15 @@ export const AddStudent = () => {
                 />
               </Form.Item>
 
-              <div className="flex gap-10 items-center justify-center w-[100%]">
+              <div className="sm:flex gap-10 items-center justify-center w-[100%] bgblack">
                 <Form.Item
                   name={"typeStudent"}
                   label={"Talabalik turi"}
                   rules={[{ required: true, message: "OTM ni tanlang" }]}
+                  className="w-[100%] sm:w-[50%]"
                 >
                   <Select
-                    style={{ width: "300px" }}
+                    className="w-[100%]"
                     defaultValue={"Barchasi"}
                     allowClear
                   >
@@ -127,10 +128,11 @@ export const AddStudent = () => {
                   name={"contractAmount"}
                   label={"Kontrakt summa"}
                   rules={[{ required: true, message: "OTM ni tanlang" }]}
+                  className="w-[100%] sm:w-[50%]"
                 >
                   <Input
                     type="text"
-                    style={{ width: "300px" }}
+                    className="w-[100%]"
                     placeholder={"Summani kiriting"}
                   />
                 </Form.Item>

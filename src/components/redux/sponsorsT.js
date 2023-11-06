@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import SponsorsData from "../data/sponsors-data";
-// import { SponsorsData } from "../../data/sponsors";
 
 const sponsors = createSlice({
   name: "sponsorsT",
@@ -14,7 +13,7 @@ const sponsors = createSlice({
     },
     editSponsore: (state, action) => {
       state.sponsors[action.payload.index] = action.payload.data;
-      console.log(state.sponsors);
+      // console.log(state.sponsors);
     },
   },
 });
@@ -22,5 +21,3 @@ const sponsors = createSlice({
 export const { editSponsor, editSponsore } = sponsors.actions;
 
 export default sponsors.reducer;
-
-// console.log(sponsors);
