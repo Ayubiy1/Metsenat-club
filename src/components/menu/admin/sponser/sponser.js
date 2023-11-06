@@ -233,11 +233,13 @@ export const Modalss = ({}) => {
         <EditOutlined /> Tahrirlash
       </Button>
       <Modal
-        title="Modalaaa"
+        title="Modala"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
+        className="absolute top-[50%] left-[50%]"
+        style={{ transform: "translate(-50%,-50%)" }}
       >
         <Form
           form={form}
