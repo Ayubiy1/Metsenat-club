@@ -39,7 +39,7 @@ const Sopnser = () => {
   const navigate = useNavigate();
   return (
     <SponsorWrapper>
-      <div>
+      <div className="parent">
         <div className="bg-[#fff]">
           <Container>
             <div className="flex items-center gap-5">
@@ -114,7 +114,7 @@ const Sopnser = () => {
                       </Typography>
                     </div>
 
-                    <div className="w-[450px] sm:flex items-center justify-between mt-5">
+                    <div className="max-w-[450px] sm:flex items-center justify-between mt-5">
                       <div>
                         <Typography
                           className="text-[#B5B5C3] font-semibold"
@@ -238,8 +238,7 @@ export const Modalss = ({}) => {
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
-        className="absolute top-[50%] left-[50%]"
-        style={{ transform: "translate(-50%,-50%)" }}
+        className="absolutetop-[5%] left-[1%] sm:relative"
       >
         <Form
           form={form}
